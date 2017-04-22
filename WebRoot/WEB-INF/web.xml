@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>donate_sys</display-name>
+   <welcome-file-list>
+    <welcome-file>IndexServlet</welcome-file> 
+  </welcome-file-list>
+ 
+  <servlet>
+    <description>userLoginHandle</description>
+    <display-name>userLoginHandle</display-name>
+    <servlet-name>UserLoginHandle</servlet-name>
+    <servlet-class>com.donate.servlet.user.UserLoginHandle</servlet-class>
+  </servlet>
+  <servlet>
+    <description>userLoginHandle</description>
+    <display-name>userLoginHandle</display-name>
+    <servlet-name>UserRegister</servlet-name>
+    <servlet-class>com.donate.servlet.user.UserRegister</servlet-class>
+  </servlet>
+  <servlet>
+    <description>userLoginHandle</description>
+    <display-name>userLoginHandle</display-name>
+    <servlet-name>IndexServlet</servlet-name>
+    <servlet-class>com.donate.servlet.other.IndexServlet</servlet-class>
+    <load-on-startup>0</load-on-startup>
+  </servlet>
+
+
+
+  <servlet-mapping>
+    <servlet-name>UserLoginHandle</servlet-name>
+    <url-pattern>/user/login</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>UserRegister</servlet-name>
+    <url-pattern>/user/register</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>IndexServlet</servlet-name>
+    <url-pattern>/IndexServlet</url-pattern>
+  </servlet-mapping>
+  
+ 
+</web-app>
