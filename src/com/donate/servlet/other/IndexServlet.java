@@ -2,6 +2,7 @@ package com.donate.servlet.other;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -25,31 +26,41 @@ public class IndexServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		//doPost(request, response);
-		//查询活动状态是‘募捐’或‘执行’的活动，存到List集合中，并放到Session.
-				List<String> statusList=new ArrayList<String>();	
-				statusList.add("donate");
-				statusList.add("execute");
-				List<Project> projects=projectDao.getWithOr(Project.class,"pro_Status",statusList);
+		//查询所有的活动，存到List集合中，并放到Session.
+				List<Project> projects=projectDao.getAll(Project.class);
+				//将活动集合倒序，将最近发布的活动放在前边
+				Collections.reverse(projects);
+				//将活动列表放到session中
 				request.getSession().setAttribute("projects", projects);
+				List<Project> hot_projects=new ArrayList<Project>();
+				//将前8条状态为“募捐”的活动放到hot_projects中,如果活动总数小于8，跳出循环
+				for(int i=0;i<8 && i<projects.size();){
+					if(projects.get(i).getPro_Status().equals("donate")){
+						hot_projects.add(projects.get(i));
+						i++;
+					}
+					
+				}
+				request.getSession().setAttribute("hot_projects", hot_projects);
 				
-				//查询所有活动的总钱数，放到session中
-				List<Money> moneys=moneytDao.getAll(Money.class);
+				//查询所有活动募捐的物品和钱的总数，放到session中
+				int total_goods=0;  //总物品数
 				int total_money=0;  //总钱数
-				for(Money money : moneys){
-					total_money+=money.getMon_Number();
+				int total_people=0; //总人次
+				for(Project project : projects){
+					if(project.getPro_Type()==1)
+						total_money+=project.getPro_CurNumber();
+					if(project.getPro_Type()==2)
+						total_goods+=project.getPro_CurNumber();
+					total_people+=project.getPro_CurPeoples();
 				}
 				request.getSession().setAttribute("total_money",total_money);
-				
-				//查询所有活动募捐的物品总数，放到session中
-				List<Goods> goodss=goodsDao.getAll(Goods.class);
-				int total_goods=0;  //总钱数
-				for(Goods goods : goodss){
-					total_goods+=goods.getGo_Number();
-				}
-				request.getSession().setAttribute("total_goods",total_goods);
-				
+				request.getSession().setAttribute("total_goods",total_goods);				
+				request.getSession().setAttribute("total_people",total_people);	
+				System.out.println("===========");
 				response.sendRedirect("./index.jsp");
-		
+				
+				
 	}
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)

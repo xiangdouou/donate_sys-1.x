@@ -33,14 +33,15 @@ public class UserRegister extends HttpServlet {
 			throws ServletException, IOException {
 			
 			try {
-				//创建user对象并赋值
+				//创建user对象并给用户属性赋值
 				User user=new User();
-				user.setUser_Name(new String(request.getParameter("user_name").getBytes("ISO-8859-1"),"utf-8"));
-				user.setUser_Pass(request.getParameter("user_pass"));
-				user.setUser_Age(Integer.parseInt(request.getParameter("user_age")));
-				user.setUser_Phone(request.getParameter("user_phone"));
-				user.setUser_Address(new String(request.getParameter("user_address").getBytes("ISO-8859-1"),"utf-8"));
-				user.setUser_Email(request.getParameter("user_email"));
+				user.setUser_Name(new String(request.getParameter("user_Name").getBytes("ISO-8859-1"),"utf-8"));
+				user.setUser_Pass(request.getParameter("user_Pass"));
+				user.setUser_Age(Integer.parseInt(request.getParameter("user_Age")));
+				user.setUser_Sex(request.getParameter("user_Sex"));
+				user.setUser_Phone(request.getParameter("user_Phone"));
+				user.setUser_Address(new String(request.getParameter("user_Address").getBytes("ISO-8859-1"),"utf-8"));
+				user.setUser_Email(request.getParameter("user_Email"));
 				if(userRegister(user)){
 					//注册成功，跳转到登陆页面
 					request.getSession().setAttribute("user", user);
@@ -48,8 +49,11 @@ public class UserRegister extends HttpServlet {
 				}
 				else{
 					//注册失败，跳转到注册页面
-					request.getSession().setAttribute("reg_status",false);
-					response.sendRedirect("../jsp/user/user_register.jsp");
+					//request.getSession().setAttribute("reg_status",false);
+					//request.setAttribute("reg_status", false);
+					response.sendRedirect("../jsp/user/user_register.jsp?reg_status=false");
+//					request.setAttribute("reg_status", false);
+//					request.getRequestDispatcher("../jsp/user/user_register.jsp").forward(request, response);
 				}
 			} catch (Exception e) {
 				
@@ -58,20 +62,20 @@ public class UserRegister extends HttpServlet {
 	}
 	
 	
-	//注册
-
-		public boolean userRegister(User user) throws Exception {
-			//首先查看数据库是否存在此用户名
-			List<User> users=userDao.getByParam(User.class,"user_Name",user.getUser_Name());
-			//如果存在此用户名，注册失败
-			if(!users.isEmpty())
-				return false;
-			else{
-				//注册成功
-				userDao.sava(user);
-				return true;
-			}
-			
+	
+	//用户注册
+	public boolean userRegister(User user) throws Exception {
+		//首先查看数据库是否存在此用户名
+		List<User> users=userDao.getByParam(User.class,"user_Name",user.getUser_Name());
+		//如果存在此用户名，注册失败
+		if(!users.isEmpty())
+			return false;
+		else{
+			//注册成功
+			userDao.sava(user);
+			return true;
 		}
+		
+	}
 
 }

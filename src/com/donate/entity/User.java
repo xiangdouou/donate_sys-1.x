@@ -21,6 +21,7 @@ public class User {
 	private String user_Name;
 	private String user_Pass;
 	private int  user_Age;
+	private String user_Sex;
 	private String user_Phone;
 	private String user_Email;
 	private String user_Address;
@@ -67,6 +68,15 @@ public class User {
 	}
 	
 	@Basic
+	@Column(name="user_Sex",nullable=false)
+	public String getUser_Sex() {
+		return user_Sex;
+	}
+	public void setUser_Sex(String user_Sex) {
+		this.user_Sex = user_Sex;
+	}
+	
+	@Basic
 	@Column(name="user_Phone",nullable=false)
 	public String getUser_Phone() {
 		return user_Phone;
@@ -92,6 +102,7 @@ public class User {
 	public void setUser_Address(String user_Address) {
 		this.user_Address = user_Address;
 	}
+	
 	
 	
 

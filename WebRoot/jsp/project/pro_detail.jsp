@@ -10,7 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'pro_detail.jsp' starting page</title>
+    <title>活动详情</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -26,11 +26,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
   	 	<c:forEach items="${projects}" var="project">
   	 		<c:if test="${param.pro_id==project.id}">
-  	 				项目名：${project.pro_Title} <br>
+  	 				项目名：${project.pro_Title}<br>
+  	 				项目类型：${project.pro_Type==1?"捐钱":"物品" }<br>
    					项目描述：${project.pro_Des }<br>
+   					主办单位：${project.pro_Sponsor }<br>
 		  			项目状态：${project.pro_Status }<br>
 		  			开始时间：${project.pro_StartTime }<br>
 		  			结束时间：${project.pro_EndTime }<br>
+		  			目标数：${project.pro_TargetNumber }<br>
+		  			已募捐数：${project.pro_CurNumber }<br>
+		  			参与总人次：${project.pro_CurPeoples }<br>
    			</c:if>
   	 	</c:forEach>
    		

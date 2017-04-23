@@ -24,6 +24,27 @@
     <servlet-class>com.donate.servlet.other.IndexServlet</servlet-class>
     <load-on-startup>0</load-on-startup>
   </servlet>
+  <servlet>
+    <description>userLoginHandle</description>
+    <display-name>userLoginHandle</display-name>
+    <servlet-name>UserLogout</servlet-name>
+    <servlet-class>com.donate.servlet.user.UserLogout</servlet-class>
+  </servlet>
+  <servlet>
+    <description>userLoginHandle</description>
+    <display-name>userLoginHandle</display-name>
+    <servlet-name>ProjectPage</servlet-name>
+    <servlet-class>com.donate.servlet.project.ProjectPage</servlet-class>
+  </servlet>
+  <servlet>
+    <description>userLoginHandle</description>
+    <display-name>userLoginHandle</display-name>
+    <servlet-name>ProjectSDetail</servlet-name>
+    <servlet-class>com.donate.servlet.project.ProjectSDetail</servlet-class>
+  </servlet>
+
+
+
 
 
 
@@ -38,6 +59,18 @@
   <servlet-mapping>
     <servlet-name>IndexServlet</servlet-name>
     <url-pattern>/IndexServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>UserLogout</servlet-name>
+    <url-pattern>/user/logout</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ProjectPage</servlet-name>
+    <url-pattern>/project/page</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ProjectSDetail</servlet-name>
+    <url-pattern>/project/detail</url-pattern>
   </servlet-mapping>
   
  

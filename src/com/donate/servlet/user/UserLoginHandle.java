@@ -41,16 +41,14 @@ public class UserLoginHandle extends HttpServlet {
 		this.user.setUser_Pass(user_pass);
 		if(userLogin(user)==true){
 			//登陆成功
-			request.getSession().setAttribute("user", this.user);
+			request.getSession().setAttribute("user",this.user);
 			request.getSession().setAttribute("login_status",true);
 			response.sendRedirect("../index.jsp");
 		}
 		else{
 			//登陆失败
 			request.getSession().setAttribute("login_status",false);
-//			request.setAttribute("login_msg", false);
-			response.sendRedirect("../jsp/user/user_login.jsp?login_msg=false");
-			//response.sendRedirect("../jsp/user/user_login.jsp");
+			response.sendRedirect("../jsp/user/user_login.jsp");
 		}
 	}
 	

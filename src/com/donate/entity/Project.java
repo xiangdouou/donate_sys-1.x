@@ -15,12 +15,14 @@ public class Project implements Serializable{
 	private Integer id;
 	private String pro_Title;
 	private String pro_Des;
-	private Integer pro_Type;
+	private Integer pro_Type;  //捐款类型（1：募捐钱/2：募捐物品）
 	private String pro_StartTime;
 	private String pro_EndTime;
 	private String pro_Status;
-	private Integer pro_TargetNumber;
 	private String pro_Sponsor;
+	private Integer pro_TargetNumber;
+	private Integer pro_CurNumber;
+	private Integer pro_CurPeoples;
 	
 	@Id
 	@Column(name="id",nullable=false)
@@ -86,15 +88,6 @@ public class Project implements Serializable{
 	}
 	
 	@Basic
-	@Column(name="pro_TargetNumber",nullable=false)
-	public Integer getPro_TargetNumber() {
-		return pro_TargetNumber;
-	}
-	public void setPro_TargetNumber(Integer pro_TargetNumber) {
-		this.pro_TargetNumber = pro_TargetNumber;
-	}
-	
-	@Basic
 	@Column(name="pro_Sponsor",nullable=false)
 	public String getPro_Sponsor() {
 		return pro_Sponsor;
@@ -102,6 +95,35 @@ public class Project implements Serializable{
 	public void setPro_Sponsor(String pro_Sponsor) {
 		this.pro_Sponsor = pro_Sponsor;
 	}
+	
+	@Basic
+	@Column(name="pro_TargetNumber",nullable=false)
+	public Integer getPro_TargetNumber() {
+		return pro_TargetNumber;
+	}
+	public void setPro_TargetNumber(Integer pro_TargetNumber) {
+		this.pro_TargetNumber = pro_TargetNumber;
+	}
+	@Basic
+	@Column(name="pro_CurNumber")
+	public Integer getPro_CurNumber() {
+		return pro_CurNumber;
+	}
+	public void setPro_CurNumber(Integer pro_CurNumber) {
+		this.pro_CurNumber = pro_CurNumber;
+	}
+	
+	
+	@Basic
+	@Column(name="pro_CurPeoples")
+	public Integer getPro_CurPeoples() {
+		return pro_CurPeoples;
+	}
+	public void setPro_CurPeoples(Integer pro_CurPeoples) {
+		this.pro_CurPeoples = pro_CurPeoples;
+	}
+	
+	
 	
 	
 	
