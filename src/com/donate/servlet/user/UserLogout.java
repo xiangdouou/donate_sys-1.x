@@ -22,7 +22,7 @@ public class UserLogout extends HttpServlet {
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-			doPost(request, response);
+			doGet(request, response);
 	}
 
 }

@@ -38,8 +38,10 @@ public class ProjectPage extends HttpServlet {
 			page_nums=projects.size()/page_sum;
 		else
 			page_nums=projects.size()/page_sum+1;
+		
+		System.out.println(page_cur);
 		//如果页码<=0，取前6个活动
-		if(page_cur<=0){
+		if(page_cur<=1){
 			int i,maxi;
 			//将活动列表倒序
 			Collections.reverse(projects);	
@@ -47,7 +49,7 @@ public class ProjectPage extends HttpServlet {
 				pagePro_List.add(projects.get(i));
 				System.out.println("i"+i);
 			}
-			page_cur=0;
+			page_cur=1;
 			System.out.println("pagePro_List size"+pagePro_List.size());
  		}
 		else if(page_cur>=page_nums){  
@@ -61,7 +63,7 @@ public class ProjectPage extends HttpServlet {
 			//页码没有超出界限
 			//将活动列表倒序
 			Collections.reverse(projects);	
-			for(int i=page_cur*page_sum;i<(page_cur+1)*page_sum && i<projects.size();i++){
+			for(int i=(page_cur-1)*page_sum;i<page_cur*page_sum && i<projects.size();i++){
 				pagePro_List.add(projects.get(i));
 			}	
 			
@@ -75,7 +77,7 @@ public class ProjectPage extends HttpServlet {
 	
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-			doPost(request, response);
+			doGet(request, response);
 	}
 	
 	

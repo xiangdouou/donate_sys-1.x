@@ -1,41 +1,5 @@
 @CHARSET "UTF-8";
-body{
-	padding-top:70px;
-}
-/*
- * 头部导航
- */
 
-.navbar-default{
-	background-color: white;
-	height: 60px;
-	
-}
-.navbar-default .navbar-header a,.navbar-default .navbar-header a:hover{
-	color: #ea6f5a;
-	font-size:23px;
-	font-weight:bold;
-	padding: 20px 40px;
-}
-.navbar-default .navbar-nav li a{
-	color: black;
-	font-size:18px;
-	padding: 20px 15px;
-}
-.navbar-default .navbar-nav li a:hover{
-	color: #ea6f5a;
-}
-.navbar-default form{
-	padding:7px 40px;
-}
-.navbar-right{
-	padding: 20px 15px;
-	font-size:18px;
-	margin-right: 0px;
-}
-.navbar-right a{
-	text-decoration: none;
-}
 
 .row{
 	padding:0px;
@@ -164,18 +128,18 @@ body{
 }
 .imgtop{
 	width:100%;
-	height:75px;
+	height:90px;
 }
 .imgbody{
-	padding-left: 30px;	
+	padding-left: 20px;	
 }
 .imgbody dl{
-	margin-bottom:20px;
+	margin-bottom:15px;
 }
 .imgbody dt,.imgbody dd{
-	font-size: 13px;
-    height: 20px;
-    line-height: 20px;
+	font-size: 16px;
+    height: 33px;
+    line-height: 33px;
 }
 .imgbody dd span{
 	background: url(../img/numbox_bg.png) no-repeat;
@@ -183,17 +147,15 @@ body{
     background-size:contain;
     display: inline-block;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 28px;
-    height: 35px;
-    line-height: 35px;
+    font-size: 30px;
+    height: 40px;
+    line-height: 40px;
     margin-right: -5px;
     padding-right: 18px;
     text-align: right;
-    width: 185px;
+    width: 210px;
 }
-.list3{
-	
-}
+
 .list3 .title{
 	padding:10px;
 	border-bottom: 1px solid #e9e9e9;
@@ -221,25 +183,3 @@ body{
 	width: 100%;
 }
 
-/* 底部 */
-footer{
-	background: #f4f4f4;
-    border-top: 1px solid #e1e1e1;
-    margin-top: 60px;
-    padding: 25px 0;
-	
-}
-.layout{
-	padding:0px 100px;
-}
-.partner .hd{ border-bottom:1px solid #e1e1e1; padding-bottom:10px;}
-.partner .bd{ border-top:1px solid #fff; padding:0;}
-.style123{
-	
-	padding-top:10px;
-	padding-bottom:10px;
-	line-height:20px;
-	color: #222222; 
-	font-family: "微软雅黑","黑体";
-	font-size: 15px; 
-	font-weight: normal;

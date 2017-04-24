@@ -1,41 +1,143 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTf-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE>
 <html>
   <head>
     <base href="<%=basePath%>">
     
-    <title>活动列表</title>
-    
-	<meta http-equiv="pragma" content="no-cache">
-	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">    
-	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-	<meta http-equiv="description" content="This is my page">
-	
-
+    <title>项目列表</title>
+    <link href="<%=basePath%>css/font-awesome.min.css" rel="stylesheet" type="text/css"> 
+	<link rel="stylesheet" type="text/css" href="<%=basePath%>css/bootstrap.min.css">
+ 	<link rel="stylesheet" type="text/css" href="<%=basePath%>css/nav.css">
+ 	<link rel="stylesheet" type="text/css" href="<%=basePath%>css/listinfo.css">		
+    <link href="<%=basePath%>css/font-awesome.min.css" rel="stylesheet" type="text/css"> 
+ 	<script src="<%=basePath%>js/jquery-2.2.3.min.js"></script>
+    <script src="<%=basePath%>js/bootstrap.min.js" ></script>
   </head>
   
   <body>
-    	<c:forEach items="${pagePro_List}" var="project">
-    			Id：${project.id}
-    			项目名：${project.pro_Title}<br>
-				项目描述：${project.pro_Des }<br>
-				主办单位：${project.pro_Sponsor }<br>
-	  			项目状态：${project.pro_Status }<br>
-	  			开始时间：${project.pro_StartTime }<br>
-	  			结束时间：${project.pro_EndTime }<br>
-	  			目标数：${project.pro_TargetNumber }<br>
-	  			已募捐数：${project.pro_CurNumber }<br>
-	  			参与总人次：${project.pro_CurPeoples }<br>
-	  			<br>
-    	</c:forEach>
-    	<a href="project/page?page=${param.page-1}">上一页</a>
-    	<a href="project/page?page=${param.page+1}">下一页</a>
+        <div class="navbar navbar-default navbar-fixed-top">
+
+        <div class="navbar-header">
+           　        		<a href="##" class="navbar-brand">爱心公益网 </a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li><a href="##">公益首页</a></li>
+            <li><a href="project/page?page=1">公益活动</a></li>     
+            <li><a href="##">个人中心</a></li>
+        </ul>
+
+        <form action="##" class="navbar-form navbar-left">
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="请输入关键词" />
+            </div>
+            <button type="submit" class="btn btn-default">搜索</button>
+        </form>
+        <div class="navbar-right text-danger">
+        	欢迎，<span></span>登录&nbsp;|&nbsp;<span><a class="text-danger">注销</a></span>
+        </div>
+
+    </div>
+    <div class="container">
+	    <div class="row col-xs-10 col-xs-offset-1">
+	    	<div class="row">
+	    		<ol class="breadcrumb">
+				    <li><a href="#">首页</a></li>
+				    <li><a href="#">项目列表</a></li>
+				</ol>
+	    	</div>
+	    	<div class="row rowtop">
+	    <!-- 	给需要帮助的人一只手  -->
+	    	</div>
+	    	<div class="row">		
+	    		<c:forEach items="${pagePro_List }" var="project">
+	    			<div class="media">	
+					<br>		 
+				        <a class="pull-left" href="project/detail?pro_id=${project.id }">
+				            <img class="media-object" src="./img/list1.jpg">
+				        </a>
+				        <div class="media-body">
+							<div class="leftmedia">
+								
+								<!-- 活动标题 -->
+					        	<span class="media-heading h4"><a>${project.pro_Title } </a></span>
+					     		<div class="descript small">
+					            	<span class="text-muted">项目简介&nbsp;|&nbsp;</span>
+					            	<!-- 项目简介 -->
+					        		<span>${project.pro_Des}</span>
+								</div>
+								<br>
+								<div class="small">									
+										<span class="text-muted">筹款目标&nbsp;|&nbsp;</span>
+										<span>${project.pro_TargetNumber}</span>
+										<br>
+										<span class="text-muted">筹款时间&nbsp;|&nbsp;</span>
+										<span>${project.pro_StartTime }</span>
+										至
+										<span>${project.pro_EndTime}</span>
+										<br>
+										<span class="text-muted">主办方&nbsp;|&nbsp;</span>
+										<span>${project.pro_Sponsor }</span> 
+								</div>
+							</div>
+							<div class="rightmedia">
+								<div class="small">
+								
+									<p>		
+										<!-- 项目状态 -->							
+										<span class="text-muted">项目状态:&nbsp;</span>
+										<span>${pro_status['donate']}</span>
+										<br>
+									</p>
+									<p class="left">
+										<!-- 已筹元数或件数 -->
+										<span class="text-muted">已筹:&nbsp;</span>
+										<span class="text-red">${project.pro_CurNumber}</span>
+									</p>
+									<p class="right text-right">
+										<!-- 捐款 人次-->
+										<span class="text-red">${project.pro_CurPeoples }</span>
+										<span class="text-muted">人次捐款</span> 
+									</p>
+									<!-- 进度条 -->
+									<div class="progress progress-striped active" style="float:left;">
+									       <div class="progress-bar progress-bar-success" style="width:${project.pro_CurNumber*100/project.pro_TargetNumber}%" aria-valuenow="40" ></div>
+									</div>
+									<!-- 进度条数字 -->
+									<span class="text-muted number text-right"><fmt:formatNumber  type="number" value="${project.pro_CurNumber*100/project.pro_TargetNumber}" maxFractionDigits="0"/> %</span> 
+								   
+									<a class="btn btn-success btn-sm" href="project/detail?pro_id=${project.id }">我要参与</a> 
+								</div>
+							</div>
+				        </div>				        
+    				</div>
+	    			
+	    		</c:forEach>
+					
+    				<!-- 分页导航 -->
+    				<ul class="pager">
+					    <li><a href="project/page?page=${param.page-1}">«上一页</a></li>
+					    <li><a href="project/page?page=${param.page+1}">下一页»</a></li>
+					</ul>
+			</div>
+	    
+	    </div>
+
+	</div>
+ 	<footer>
+  		<div class="layout partner">
+			<div class="hd"><h2>联系我们</h2></div>
+			<div class="bd"></div>
+			<div class="text-center">@版权归XXX所有</div>
+	    </div>
+    </footer>
+  
+
   </body>
 </html>

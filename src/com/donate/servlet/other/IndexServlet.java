@@ -3,7 +3,9 @@ package com.donate.servlet.other;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -21,6 +23,14 @@ public class IndexServlet extends HttpServlet {
 	
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		//将活动状态放到Map中，以便在项目中显示中文
+		Map<String,String > pro_status=new HashMap<String, String>();
+		pro_status.put("start","发起");
+		pro_status.put("check","正在审核");
+		pro_status.put("donate","正在募捐");
+		pro_status.put("execute","正在执行");
+		pro_status.put("end","已结束");
+		request.getSession().setAttribute("pro_status", pro_status);
 		//查询所有的活动，存到List集合中
 		List<Project> projects=projectDao.getAll(Project.class);
 		//将活动集合倒序，将最近发布的活动放在前边
@@ -59,8 +69,7 @@ public class IndexServlet extends HttpServlet {
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
-		
+		doGet(request, response);
 	}
 
 }

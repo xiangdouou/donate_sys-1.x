@@ -12,36 +12,44 @@
     <servlet-class>com.donate.servlet.user.UserLoginHandle</servlet-class>
   </servlet>
   <servlet>
-    <description>userLoginHandle</description>
-    <display-name>userLoginHandle</display-name>
+    <description>UserRegister</description>
+    <display-name>UserRegister</display-name>
     <servlet-name>UserRegister</servlet-name>
     <servlet-class>com.donate.servlet.user.UserRegister</servlet-class>
   </servlet>
   <servlet>
-    <description>userLoginHandle</description>
-    <display-name>userLoginHandle</display-name>
+    <description>IndexServlet</description>
+    <display-name>IndexServlet</display-name>
     <servlet-name>IndexServlet</servlet-name>
     <servlet-class>com.donate.servlet.other.IndexServlet</servlet-class>
     <load-on-startup>0</load-on-startup>
   </servlet>
   <servlet>
-    <description>userLoginHandle</description>
-    <display-name>userLoginHandle</display-name>
+    <description>userLogoutHandle</description>
+    <display-name>userLogoutHandle</display-name>
     <servlet-name>UserLogout</servlet-name>
     <servlet-class>com.donate.servlet.user.UserLogout</servlet-class>
   </servlet>
   <servlet>
-    <description>userLoginHandle</description>
-    <display-name>userLoginHandle</display-name>
+    <description>ProjectPage</description>
+    <display-name>ProjectPage</display-name>
     <servlet-name>ProjectPage</servlet-name>
     <servlet-class>com.donate.servlet.project.ProjectPage</servlet-class>
   </servlet>
   <servlet>
-    <description>userLoginHandle</description>
-    <display-name>userLoginHandle</display-name>
-    <servlet-name>ProjectSDetail</servlet-name>
-    <servlet-class>com.donate.servlet.project.ProjectSDetail</servlet-class>
+    <description>ProjectDonate</description>
+    <display-name>ProjectDonate</display-name>
+    <servlet-name>ProjectDonate</servlet-name>
+    <servlet-class>com.donate.servlet.project.ProjectDonate</servlet-class>
   </servlet>
+  <servlet>
+    <description>ProjectDetail</description>
+    <display-name>ProjectDetail</display-name>
+    <servlet-name>ProjectDetail</servlet-name>
+    <servlet-class>com.donate.servlet.project.ProjectDetail</servlet-class>
+  </servlet>
+
+
 
 
 
@@ -68,8 +76,13 @@
     <servlet-name>ProjectPage</servlet-name>
     <url-pattern>/project/page</url-pattern>
   </servlet-mapping>
+ 
   <servlet-mapping>
-    <servlet-name>ProjectSDetail</servlet-name>
+    <servlet-name>ProjectDonate</servlet-name>
+    <url-pattern>/project/donate</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ProjectDetail</servlet-name>
     <url-pattern>/project/detail</url-pattern>
   </servlet-mapping>
   
