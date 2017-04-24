@@ -23,6 +23,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
     	<c:forEach items="${pagePro_List}" var="project">
+    			Id：${project.id}
     			项目名：${project.pro_Title}<br>
 				项目描述：${project.pro_Des }<br>
 				主办单位：${project.pro_Sponsor }<br>
@@ -32,8 +33,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  			目标数：${project.pro_TargetNumber }<br>
 	  			已募捐数：${project.pro_CurNumber }<br>
 	  			参与总人次：${project.pro_CurPeoples }<br>
+	  			<br>
     	</c:forEach>
-    	<a href="project/page?page=${param.page+1}">上一页</a>
-    	<a href="project/page?page=${param.page-1}">下一页</a>
+    	<a href="project/page?page=${param.page-1}">上一页</a>
+    	<a href="project/page?page=${param.page+1}">下一页</a>
   </body>
 </html>
