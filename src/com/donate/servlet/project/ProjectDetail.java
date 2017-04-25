@@ -34,11 +34,12 @@ public class ProjectDetail extends HttpServlet {
 			Project cur_project=projectDao.getByParam(Project.class,"id",pro_id).get(0);
 			//将活动放到session
 			request.getSession().setAttribute("cur_project", cur_project);
-			
+			System.out.println("pro_Type  "+cur_project.getPro_Type());
 			//如果活动募捐的是钱
 			if(cur_project.getPro_Type()==1){
 				//根据活动名获取捐钱的记录列表
 				List<Money> curpro_moneys=moneyDao.getByParam(Money.class,"pro_Title",cur_project.getPro_Title());
+				System.out.println("size "+curpro_moneys.size());
 				request.getSession().setAttribute("curpro_moneys", curpro_moneys);
 			}
 			
@@ -48,7 +49,6 @@ public class ProjectDetail extends HttpServlet {
 				List<Goods> curpro_goodss=goodsDao.getByParam(Goods.class,"pro_Title",cur_project.getPro_Title());
 				request.getSession().setAttribute("curpro_goodss", curpro_goodss);
 			}
-			
 			response.sendRedirect("../jsp/project/pro_detail.jsp");
 		} catch (Exception e) {
 			e.printStackTrace();

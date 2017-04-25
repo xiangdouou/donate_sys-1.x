@@ -25,8 +25,6 @@ public class IndexServlet extends HttpServlet {
 			throws ServletException, IOException {
 		//将活动状态放到Map中，以便在项目中显示中文
 		Map<String,String > pro_status=new HashMap<String, String>();
-		pro_status.put("start","发起");
-		pro_status.put("check","正在审核");
 		pro_status.put("donate","正在募捐");
 		pro_status.put("execute","正在执行");
 		pro_status.put("end","已结束");
@@ -38,7 +36,7 @@ public class IndexServlet extends HttpServlet {
 		//将活动列表放到session中
 		request.getSession().setAttribute("projects", projects);
 		List<Project> hot_projects=new ArrayList<Project>();
-		System.out.println(projects.size());
+		// System.out.println(projects.size());
 		//将前8条状态为“募捐”的活动放到hot_projects中,如果活动总数小于8，跳出循环
 		for(int i=0,j=0;j<8 && i<projects.size();i++){
 			if(projects.get(i).getPro_Status().equals("donate")){

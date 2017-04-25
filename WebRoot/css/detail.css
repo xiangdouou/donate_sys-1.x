@@ -77,9 +77,6 @@
 	width:100%; 
 }
 
-.moneydiv{
-	display: none;
-}
 .brow{
 	margin-top: 60px;
 }
@@ -117,11 +114,15 @@
 	border:1px solid #dadada;
 	background-color: #f5f5f5;
 }
+.tab-content>.tab-pane{
+	font-size: 17px;
+}
 .tab-pane{
 	padding: 20px;
 	height: 400px;
 	border:1px solid #dadada;
 	border-top: none; 
+	
 }
 .gundong{
 	margin-top: 20px;
@@ -149,7 +150,7 @@
 }
 
 #cont2 li span,#cont1 li span{
-		margin: 15px;
+		margin:10px;
 }
 .list-group-item{
 border:none; 

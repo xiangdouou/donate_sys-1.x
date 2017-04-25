@@ -22,28 +22,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-        <div class="navbar navbar-default navbar-fixed-top">
-
-        <div class="navbar-header">
-           　        		<a href="##" class="navbar-brand">爱心公益网 </a>
-        </div>
-        <ul class="nav navbar-nav">
-            <li><a href="##">公益首页</a></li>
-            <li><a href="project/page?page=1">公益活动</a></li>     
-            <li><a href="##">个人中心</a></li>
-        </ul>
-
-        <form action="##" class="navbar-form navbar-left">
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="请输入关键词" />
-            </div>
-            <button type="submit" class="btn btn-default">搜索</button>
-        </form>
-        <div class="navbar-right text-danger">
-        	欢迎，<span></span>登录&nbsp;|&nbsp;<span><a class="text-danger">注销</a></span>
-        </div>
-
-    </div>
+    <c:import url="../top.jsp"></c:import>
     <div class="container">
 	    <div class="row col-xs-10 col-xs-offset-1">
 	    	<div class="row">
@@ -66,7 +45,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<div class="leftmedia">
 								
 								<!-- 活动标题 -->
-					        	<span class="media-heading h4"><a>${project.pro_Title } </a></span>
+					        	<span class="media-heading h4"><a href="project/detail?pro_id=${project.id }">${project.pro_Title } </a></span>
 					     		<div class="descript small">
 					            	<span class="text-muted">项目简介&nbsp;|&nbsp;</span>
 					            	<!-- 项目简介 -->

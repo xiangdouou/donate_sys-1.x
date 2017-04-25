@@ -1,8 +1,12 @@
 package com.donate.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -14,7 +18,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="money",schema="donate_sys")
-public class Money {
+public class Money implements Serializable {
 	private Integer id;
 	private Integer mon_Number;   //捐献金额数
 	private String user_Name;     //捐钱的用户名
@@ -22,6 +26,7 @@ public class Money {
 	private String do_Time;       //捐赠时间
 	
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="id",nullable=false)
 	public Integer getId() {
 		return id;

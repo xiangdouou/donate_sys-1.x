@@ -1,6 +1,7 @@
 package com.donate.servlet.project;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -32,24 +33,41 @@ public class ProjectDonate extends HttpServlet {
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		//获取页面传来的捐赠类型（钱or物品）
-		int type=Integer.parseInt(request.getParameter("type"));
-		//更新活动当前募捐到的物品（钱）总数
-		Project project= (Project)request.getSession().getAttribute("cur_project");
-		if(type==1){//如果是捐钱
-			donateMoney(request,response);
-			//加上钱数
-			project.setPro_CurNumber(project.getPro_CurNumber()+this.money_nums);
-		}
-		if(type==2){//如果是捐物品
-			donateGoods(request, response);
-			//加上物品数
-			project.setPro_CurNumber(project.getPro_CurNumber()+this.goods_nums);
-		}
-			
-		projectDao.update(project);
-		request.getSession().setAttribute("cur_project",project);
-		response.sendRedirect("project/detail?pro_id="+project.getId());
+			try {
+				
+					//获取页面传来的捐赠类型（钱or物品）
+					int type=Integer.parseInt(request.getParameter("type"));
+					//更新活动当前募捐到的物品（钱）总数
+					Project project= (Project)request.getSession().getAttribute("cur_project");
+					if(type==1){//如果是捐钱
+						donateMoney(request,response);
+						//加上钱数
+						project.setPro_CurNumber(project.getPro_CurNumber()+this.money_nums);
+						
+						//更新捐钱记录列表
+						List<Money> curpro_moneys = moneyDao.getByParam(Money.class,"pro_Title",project.getPro_Title());
+						request.getSession().setAttribute("curpro_moneys", curpro_moneys);
+						
+					}
+					if(type==2){//如果是捐物品
+						donateGoods(request, response);
+						//加上物品数
+						project.setPro_CurNumber(project.getPro_CurNumber()+this.goods_nums);
+						
+						//更新捐钱列表
+						List<Goods> curpro_goodss=goodsDao.getByParam(Goods.class,"pro_Title",project.getPro_Title());
+						request.getSession().setAttribute("curpro_goodss", curpro_goodss);
+	
+					}
+						
+					projectDao.update(project);
+					request.getSession().setAttribute("cur_project",project);
+					response.sendRedirect("../project/detail?pro_id="+project.getId());
+				} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		
 	}
 	
 	//添加捐钱记录
@@ -69,11 +87,11 @@ public class ProjectDonate extends HttpServlet {
 		
 		moneyDao.sava(money);
 	}
-	public void donateGoods(HttpServletRequest request, HttpServletResponse response){
+	public void donateGoods(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		//获取物品名、物品数、捐献者姓名(当前用户名)、活动名、捐献日期
-		String goods_name=request.getParameter("goods_Name");
+		String goods_name=new String(request.getParameter("goods_Name").getBytes("ISO-8859-1"),"utf-8");
 		this.goods_nums=Integer.parseInt(request.getParameter("goods_Number"));
-		String user_Name=((User)request.getSession().getAttribute("user_Name")).getUser_Name();
+		String user_Name=((User)request.getSession().getAttribute("user")).getUser_Name();
 		String pro_Title=((Project)request.getSession().getAttribute("cur_project")).getPro_Title();
 		SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
 		String do_Time=format.format(new Date());

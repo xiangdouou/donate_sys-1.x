@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -14,11 +15,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  	<link rel="stylesheet" type="text/css" href="./css/login.css">
  	 <!-- Custom Fonts -->
     <link href="./css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="<%=basePath%>css/nav.css">	
    	<script src="js/jquery-2.2.3.min.js"></script>
    	<script type="text/javascript">
    		$(function(){
    			//如果登陆失败失败，显示提示信息。  
-   			if(${login_status==false}){
+   			if(${user==null}){
    				$("#alert").show();
    			}
    			//点击input标签提示信息消失
@@ -30,6 +32,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
 
   <body>
+ 	 <div class="navbar navbar-default navbar-fixed-top">
+
+        <div class="navbar-header">
+           　        	<a href="##" class="navbar-brand">爱心公益网 </a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li><a href="##">公益首页</a></li>
+            <li><a href="project/page?page=0">公益活动</a></li>     
+            <li><a href="jsp/user/user_detail.jsp" id="personal" style="display: none;">个人中心</a></li>
+        </ul>
+
+       
+        <div class="navbar-right text-danger">
+        	欢迎，<span id="user_Name"></span><a href="jsp/user/user_login.jsp" id="login">请登录</a>&nbsp;&nbsp;<span><a href="user/logout" class="text-danger" id="logout" style="display: none;">注销</a></span>
+        </div>
+    </div>
     <div class="container main">
        <div class="alert alert-danger" id="alert" style="display: none;">
     		用户名或密码错误！！！

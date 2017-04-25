@@ -1,5 +1,7 @@
 package com.donate.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,7 +16,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="goods",schema="donate_sys")
-public class Goods {
+public class Goods implements Serializable {
 	private Integer id;
 	private String go_Name;    //物品名
 	private Integer go_Number;  //数量

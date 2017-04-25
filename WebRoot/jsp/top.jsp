@@ -16,16 +16,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
+	<link rel="stylesheet" type="text/css" href="<%=basePath%>css/nav.css">	
 	 <script type="text/javascript">
     	$(function(){
     		//如果登陆成功
-    		if(${login_status==true}){
+    		if(${user!=null}){
     			//将用户名显示在页面
     			$("#login").text('${user.user_Name}');
+    			
+    			//将“个人中心”显示在页面
+    			$("#personal").show();
+    			
     			//将“注销”文字显示在页面
     			$("#logout").show();
+    			
     			//将用户名的链接设置为用户详情页面
-    			$("#login").attr('href','jsp/user/user_detail.jsp');
+    			$("#login").attr('href','user/detail');
     		}
     	});
     </script>
@@ -40,15 +46,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <ul class="nav navbar-nav">
             <li><a href="##">公益首页</a></li>
             <li><a href="project/page?page=0">公益活动</a></li>     
-            <li><a href="jsp/user/user_detail.jsp" id="personal" style="display: none;">个人中心</a></li>
+            <li><a href="user/detail" id="personal" style="display: none;">个人中心</a></li>
         </ul>
 
-        <form action="##" class="navbar-form navbar-left">
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="请输入关键词" />
-            </div>
-            <button type="submit" class="btn btn-default">搜索</button>
-        </form>
         <div class="navbar-right text-danger">
         	欢迎，<span id="user_Name"></span><a href="jsp/user/user_login.jsp" id="login">请登录</a>&nbsp;&nbsp;<span><a href="user/logout" class="text-danger" id="logout" style="display: none;">注销</a></span>
         </div>

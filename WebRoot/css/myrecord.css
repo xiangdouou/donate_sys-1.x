@@ -15,7 +15,8 @@
             border-radius: 4px;
             border: 1px solid #ddd;
             box-shadow: 0 1px 4px rgba(0, 0, 0, 0.067);
-            margin-left: 40px; 
+            margin-left: 20px; 
+            margin-top: 50px;
         }
         ul.nav-tabs li{
             margin: 0;
@@ -58,18 +59,21 @@
     padding:10px;
 	border-bottom: 2px solid #579f23;
 }
-.listtitle:hover{
-	color: #579f23;
-}
 
 
-
-
-
-#processListTop .proj_content {
+.proj_content {
+	border:1px solid transparent;
+	margin:0px;
     position: relative;
     padding-left: 30px;
     border-left: 2px solid #dbdbdb;
     word-wrap: break-word;
     word-break: break-all;
+}
+.proj_content .greenspot {
+    background: url(../img/dian.png) no-repeat 0 0px;
+    width: 10px;
+    height: 12px;
+    position: absolute;
+    left: -6px;
 }

@@ -25,7 +25,7 @@ public class UserLoginHandle extends HttpServlet {
 	private User user;
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-			doPost(request, response);
+			doPost(request,response);
 	}
 
 	//处理post请求
@@ -39,15 +39,19 @@ public class UserLoginHandle extends HttpServlet {
 		this.user=new User();
 		this.user.setUser_Name(user_name);
 		this.user.setUser_Pass(user_pass);
+		//获取之前的页面(从哪个页面跳转过来)的url,
+		String url=(String) request.getSession().getAttribute("url");
+		System.out.println("url "+url);
 		if(userLogin(user)==true){
 			//登陆成功
 			request.getSession().setAttribute("user",this.user);
-			request.getSession().setAttribute("login_status",true);
-			response.sendRedirect("../index.jsp");
+			if(url!=null)
+				response.sendRedirect(url);
+			else
+				response.sendRedirect("../IndexServlet");
 		}
 		else{
 			//登陆失败
-			request.getSession().setAttribute("login_status",false);
 			response.sendRedirect("../jsp/user/user_login.jsp");
 		}
 	}

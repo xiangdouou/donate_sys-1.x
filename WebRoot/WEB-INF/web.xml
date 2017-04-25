@@ -48,14 +48,40 @@
     <servlet-name>ProjectDetail</servlet-name>
     <servlet-class>com.donate.servlet.project.ProjectDetail</servlet-class>
   </servlet>
+  <servlet>
+    <description>ProjectDetail</description>
+    <display-name>ProjectDetail</display-name>
+    <servlet-name>UserDetail</servlet-name>
+    <servlet-class>com.donate.servlet.user.UserDetail</servlet-class>
+  </servlet>
+  <servlet>
+    <description>AdminProjectList</description>
+    <display-name>AdminProjectList</display-name>
+    <servlet-name>AdminProjectList</servlet-name>
+    <servlet-class>com.donate.servlet.admin.AdminProjectList</servlet-class>
+  </servlet>
+
+
+
+  <filter>
+    <filter-name>LoginFilter</filter-name>
+    <filter-class>com.donate.filter.LoginFilter</filter-class>
+  </filter>
 
 
 
 
-
-
-
-
+	
+  	<filter-mapping>
+		<!-- 查看个人中心拦截 -->
+	    <filter-name>LoginFilter</filter-name>
+	    <url-pattern>/user/detail</url-pattern>
+  	</filter-mapping>	
+  	<filter-mapping>
+  		<!--活动捐款拦截 -->
+	    <filter-name>LoginFilter</filter-name>
+	    <url-pattern>/project/donate</url-pattern>
+ 	 </filter-mapping>
   <servlet-mapping>
     <servlet-name>UserLoginHandle</servlet-name>
     <url-pattern>/user/login</url-pattern>
@@ -84,6 +110,14 @@
   <servlet-mapping>
     <servlet-name>ProjectDetail</servlet-name>
     <url-pattern>/project/detail</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>UserDetail</servlet-name>
+    <url-pattern>/user/detail</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AdminProjectList</servlet-name>
+    <url-pattern>/admin/projectlist</url-pattern>
   </servlet-mapping>
   
  

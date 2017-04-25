@@ -1,6 +1,7 @@
-package com.donate.servlet.project;
+package com.donate.servlet.admin;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -14,7 +15,7 @@ import com.donate.dao.EntityDao;
 import com.donate.dao.EntityDaoImpl;
 import com.donate.entity.Project;
 
-public class ProjectPage extends HttpServlet {
+public class AdminProjectList extends HttpServlet {
 
 	private int page_nums=0;   //总页数
 	private int page_sum=3;   //每页的活动数
@@ -28,11 +29,8 @@ public class ProjectPage extends HttpServlet {
 		page_cur=Integer.parseInt(request.getParameter("page"));
 		pagePro_List=new ArrayList<Project>();
 		
-		//获取所有状态为“募捐”或“执行”的活动
-		List<String> params=new ArrayList<String>();
-		params.add("donate");
-		params.add("execute");
-		projects=projectDao.getWithOr(Project.class,"pro_Status",params);
+		//获取所有的活动
+		projects=projectDao.getAll(Project.class);
 		//获取总页数（活动总数/每页的活动数）
 		if(projects.size()%page_sum==0)
 			page_nums=projects.size()/page_sum;
@@ -47,10 +45,8 @@ public class ProjectPage extends HttpServlet {
 			Collections.reverse(projects);	
 			for(i=0;i<page_sum && i<projects.size();i++){
 				pagePro_List.add(projects.get(i));
-				System.out.println("i"+i);
 			}
 			page_cur=1;
-			//System.out.println("pagePro_List size"+pagePro_List.size());
  		}
 		else if(page_cur>=page_nums){  
 			//如果页码>=总页数，
@@ -69,9 +65,8 @@ public class ProjectPage extends HttpServlet {
 			
 		}
 		//将获取到的6个活动放到session
-		request.getSession().setAttribute("pagePro_List", pagePro_List);
+		request.getSession().setAttribute("adminPro_List", pagePro_List);
 		response.sendRedirect("../jsp/project/pro_list.jsp?page="+page_cur);
-		
 	}
 
 	
@@ -79,7 +74,5 @@ public class ProjectPage extends HttpServlet {
 			throws ServletException, IOException {
 			doGet(request, response);
 	}
-	
-	
 
 }
