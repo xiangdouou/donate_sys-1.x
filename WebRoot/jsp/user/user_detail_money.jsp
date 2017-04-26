@@ -21,9 +21,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <script src="<%=basePath%>js/changecolor.js" ></script>
 
   </head>
-   <style type="text/css">
-
-    </style>
 <body onload="load()">
 	<c:import url="../top.jsp"></c:import>
 <div class="container">

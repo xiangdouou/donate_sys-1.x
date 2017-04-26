@@ -26,47 +26,63 @@ public class AdminProjectList extends HttpServlet {
 	
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		page_cur=Integer.parseInt(request.getParameter("page"));
-		pagePro_List=new ArrayList<Project>();
 		
-		//获取所有的活动
-		projects=projectDao.getAll(Project.class);
-		//获取总页数（活动总数/每页的活动数）
-		if(projects.size()%page_sum==0)
-			page_nums=projects.size()/page_sum;
-		else
-			page_nums=projects.size()/page_sum+1;
+			try {
+				page_cur=Integer.parseInt(request.getParameter("page"));
+				pagePro_List=new ArrayList<Project>();
+				//获取请求的活动参数
+				String pro_status=request.getParameter("pro_status");
+				//如果参数为空，查出所有活动
+				if(pro_status.equals("all"))
+					projects=projectDao.getAll(Project.class);
+				else{
+					//根据请求的活动状态参数查询活动列表
+					projects=projectDao.getByParam(Project.class,"pro_Status",pro_status);
+				}
+				
+				//获取总页数（活动总数/每页的活动数）
+				if(projects.size()%page_sum==0)
+					page_nums=projects.size()/page_sum;
+				else
+					page_nums=projects.size()/page_sum+1;
+				
+				//System.out.println(page_cur);
+				//如果页码<=0，取前6个活动
+				if(page_cur<=1){
+					int i;
+					//将活动列表倒序
+					Collections.reverse(projects);	
+					for(i=0;i<page_sum && i<projects.size();i++)
+						pagePro_List.add(projects.get(i));
+					page_cur=1;
+		 		}
+				
+				else if(page_cur>=page_nums){  
+					//如果页码>=总页数，
+					for(int i=0;i<page_sum && i<projects.size();i++)
+						pagePro_List.add(projects.get(i));
+					page_cur=page_nums;
+				}
+				else{
+					//页码没有超出界限
+					//将活动列表倒序
+					Collections.reverse(projects);	
+					for(int i=(page_cur-1)*page_sum;i<page_cur*page_sum && i<projects.size();i++){
+						pagePro_List.add(projects.get(i));
+					}	
+					
+				}
+				//将获取到的6个活动放到session
+				request.getSession().setAttribute("adminPro_List", pagePro_List);
+				//response.sendRedirect("../jsp/project/pro_list.jsp?page="+page_cur);
+				request.getRequestDispatcher("/WEB-INF/admin/projectList.jsp?pro_status="+pro_status+"&page="+page_cur).forward(request, response);
+			}
+			catch (Exception e) {
+				e.printStackTrace();
+			}
 		
-		//System.out.println(page_cur);
-		//如果页码<=0，取前6个活动
-		if(page_cur<=1){
-			int i,maxi;
-			//将活动列表倒序
-			Collections.reverse(projects);	
-			for(i=0;i<page_sum && i<projects.size();i++){
-				pagePro_List.add(projects.get(i));
-			}
-			page_cur=1;
- 		}
-		else if(page_cur>=page_nums){  
-			//如果页码>=总页数，
-			for(int i=0;i<page_sum && i<projects.size();i++){
-				pagePro_List.add(projects.get(i));
-			}
-			page_cur=page_nums;
-		}
-		else{
-			//页码没有超出界限
-			//将活动列表倒序
-			Collections.reverse(projects);	
-			for(int i=(page_cur-1)*page_sum;i<page_cur*page_sum && i<projects.size();i++){
-				pagePro_List.add(projects.get(i));
-			}	
-			
-		}
-		//将获取到的6个活动放到session
-		request.getSession().setAttribute("adminPro_List", pagePro_List);
-		response.sendRedirect("../jsp/project/pro_list.jsp?page="+page_cur);
+		
+		
 	}
 
 	

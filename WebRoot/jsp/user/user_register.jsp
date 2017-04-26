@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -16,12 +17,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <link href="./css/font-awesome.min.css" rel="stylesheet" type="text/css">
    	<script src="js/jquery-2.2.3.min.js"></script>
    	<script type="text/javascript">
-   		
    		$(function(){
-   			//如果注册失败，显示提示信息。  
-   			if(${param.reg_status=="false"}){
+   			if(${register==false})
    				$("#alert").show();
-   			}
    			//点击input标签提示信息消失
    			$("input").click(function(){
   				$("#alert").hide();
@@ -31,6 +29,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
 
   <body>
+  	<c:import url="../top.jsp"></c:import>
     <div class="container main">
     <div class="alert alert-danger" id="alert" style="display: none;">
     	用户名已存在！！！

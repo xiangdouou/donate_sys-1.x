@@ -39,6 +39,15 @@ body{
 .text-red{
 	color: red;
 }
+
+.text-a{
+	color: black;
+	
+}
+.text-a:hover{
+	color: #35b306;
+	text-decoration: none;
+}
 /* 底部 */
 footer{
 	background: #f4f4f4;

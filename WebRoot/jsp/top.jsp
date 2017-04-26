@@ -19,7 +19,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" type="text/css" href="<%=basePath%>css/nav.css">	
 	 <script type="text/javascript">
     	$(function(){
-    		//如果登陆成功
+    		//如果用户不为空
     		if(${user!=null}){
     			//将用户名显示在页面
     			$("#login").text('${user.user_Name}');

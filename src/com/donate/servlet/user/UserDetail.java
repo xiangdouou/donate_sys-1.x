@@ -105,7 +105,7 @@ public class UserDetail extends HttpServlet {
 		Collections.reverse(moneys);
 		List<Money> my_moneys=null;
 		if(moneys.size()<9)
-			my_moneys=moneys.subList(0,moneys.size()-1);
+			my_moneys=moneys.subList(0,moneys.size());
 		else
 			my_moneys=moneys.subList(0,9);
 		
@@ -116,7 +116,6 @@ public class UserDetail extends HttpServlet {
 			my_goodss=goodss.subList(0,goodss.size());
 		else
 			my_goodss=goodss.subList(0,9);
-		System.out.println("size "+my_goodss.size());
 		//将参加的活动、最近捐钱记录、最近捐物品记录、捐钱总数、捐物品总数放到session
 		request.getSession().setAttribute("my_projects",my_projects);
 		request.getSession().setAttribute("my_moneys",my_moneys);

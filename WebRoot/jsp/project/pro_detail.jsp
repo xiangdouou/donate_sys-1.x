@@ -26,7 +26,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    	<div class="row">
 		     	   <ol class="breadcrumb">
 				        <li><a href="#">首页</a></li>
-				        <li><a href="<%=basePath %>jsp/project/pro_list.jsp">项目列表</a></li>
+				        <li><a href="<%=basePath %>project/page?page=0">项目列表</a></li>
 				        <li class="active"><a href="project/detail?pro_id=${cur_project.id }">${cur_project.pro_Title }</a></li>
 				   </ol>
 		    </div>
@@ -50,7 +50,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					 	<span class="text-danger">${cur_project.pro_CurNumber}</span>元/件
 					 </p>
 					 <!-- 捐款起止时间 -->
-					 <div class="text-muted">时间：<span>${cur_project.pro_StartTime}</span>至<span>${project.pro_EndTime}</span></div>
+					 <div class="text-muted">时间：<span>${cur_project.pro_StartTime}</span>至<span>${cur_project.pro_EndTime}</span></div>
 					 <!-- 已捐人次 -->
 					 <div class="text-muted">捐款人次：<span>${cur_project.pro_CurPeoples}</span>人次</div>
 					 <hr class="divider"/>

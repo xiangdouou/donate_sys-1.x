@@ -31,10 +31,18 @@ public class UserLoginHandle extends HttpServlet {
 	//处理post请求
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		//如果用户名或密码为空，重定向到登陆页面
+		if(request.getParameter("user_name")==null || request.getParameter("user_pass")==null){
+			response.sendRedirect("../jsp/user/user_login.jsp");
+			return;
+		}
 		//获取从页面传过来的用户名和密码
 		String user_name=new String(request.getParameter("user_name").getBytes("ISO-8859-1"),"utf-8");
 		String user_pass=request.getParameter("user_pass");
 		
+	
+			
 		//声明一个用户并赋值
 		this.user=new User();
 		this.user.setUser_Name(user_name);
@@ -42,17 +50,26 @@ public class UserLoginHandle extends HttpServlet {
 		//获取之前的页面(从哪个页面跳转过来)的url,
 		String url=(String) request.getSession().getAttribute("url");
 		System.out.println("url "+url);
+	
 		if(userLogin(user)==true){
 			//登陆成功
+			
 			request.getSession().setAttribute("user",this.user);
-			if(url!=null)
-				response.sendRedirect(url);
-			else
-				response.sendRedirect("../IndexServlet");
+			
+			//如果是管理员登陆
+			if(user.getUser_Name().equals("admin"))
+				response.sendRedirect("../admin/projectlist?pro_status=all&page=0");
+			else{
+				if(url!=null)
+					response.sendRedirect(url);
+				else
+					response.sendRedirect("../IndexServlet");
+			}		
 		}
 		else{
 			//登陆失败
-			response.sendRedirect("../jsp/user/user_login.jsp");
+			request.setAttribute("login",false);
+			request.getRequestDispatcher("../jsp/user/user_login.jsp").forward(request, response);
 		}
 	}
 	

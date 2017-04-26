@@ -97,7 +97,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								</p>
 								<p class="text-right text-muted lead1">
 									<i class="fa fa-commenting-o fa-fw"></i>
-									<a class="text-muted">详情</a>
+									<a class="text-muted" href="project/detail?pro_id=${project.id }">详情</a>
 								</p>
 								
 					        </div>

@@ -44,20 +44,17 @@ public class UserRegister extends HttpServlet {
 				user.setUser_Email(request.getParameter("user_Email"));
 				if(userRegister(user)){
 					//注册成功，跳转到登陆页面
-					request.getSession().setAttribute("user", user);
-					response.sendRedirect("../jsp/user/user_login.jsp");
+					request.setAttribute("user", user);
+					request.getRequestDispatcher("../jsp/user/user_login.jsp").forward(request, response);
 				}
 				else{
-					//注册失败，跳转到注册页面
-					//request.getSession().setAttribute("reg_status",false);
-					//request.setAttribute("reg_status", false);
-					response.sendRedirect("../jsp/user/user_register.jsp?reg_status=false");
-//					request.setAttribute("reg_status", false);
-//					request.getRequestDispatcher("../jsp/user/user_register.jsp").forward(request, response);
+					
+					request.setAttribute("register", false);
+					//response.sendRedirect("../jsp/user/user_register.jsp?reg_status=false");
+					request.getRequestDispatcher("../jsp/user/user_register.jsp").forward(request, response);
 				}
-			} catch (Exception e) {
-				
-				e.printStackTrace();
+			} catch (Exception e) {			
+				response.sendRedirect("../jsp/user/user_register.jsp");
 			}
 	}
 	

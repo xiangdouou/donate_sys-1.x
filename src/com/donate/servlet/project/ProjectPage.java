@@ -42,7 +42,7 @@ public class ProjectPage extends HttpServlet {
 		//System.out.println(page_cur);
 		//如果页码<=0，取前6个活动
 		if(page_cur<=1){
-			int i,maxi;
+			int i;
 			//将活动列表倒序
 			Collections.reverse(projects);	
 			for(i=0;i<page_sum && i<projects.size();i++){

@@ -39,6 +39,9 @@ public class ProjectDonate extends HttpServlet {
 					int type=Integer.parseInt(request.getParameter("type"));
 					//更新活动当前募捐到的物品（钱）总数
 					Project project= (Project)request.getSession().getAttribute("cur_project");
+					
+					//参加活动人次加一
+					project.setPro_CurPeoples(project.getPro_CurPeoples()+1);
 					if(type==1){//如果是捐钱
 						donateMoney(request,response);
 						//加上钱数
@@ -46,7 +49,7 @@ public class ProjectDonate extends HttpServlet {
 						
 						//更新捐钱记录列表
 						List<Money> curpro_moneys = moneyDao.getByParam(Money.class,"pro_Title",project.getPro_Title());
-						request.getSession().setAttribute("curpro_moneys", curpro_moneys);
+						request.setAttribute("curpro_moneys", curpro_moneys);
 						
 					}
 					if(type==2){//如果是捐物品
@@ -56,13 +59,13 @@ public class ProjectDonate extends HttpServlet {
 						
 						//更新捐钱列表
 						List<Goods> curpro_goodss=goodsDao.getByParam(Goods.class,"pro_Title",project.getPro_Title());
-						request.getSession().setAttribute("curpro_goodss", curpro_goodss);
+						request.setAttribute("curpro_goodss", curpro_goodss);
 	
 					}
 						
 					projectDao.update(project);
-					request.getSession().setAttribute("cur_project",project);
-					response.sendRedirect("../project/detail?pro_id="+project.getId());
+					request.setAttribute("cur_project",project);
+					request.getRequestDispatcher("../project/detail?pro_id="+project.getId()).forward(request, response);
 				} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

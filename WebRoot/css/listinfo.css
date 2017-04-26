@@ -28,6 +28,9 @@
 	border-bottom: 1px dashed #dfdfdf;
 	margin: 0px;
 }
+.media-object{
+	width: 220px;
+}
 .media-body{
 	padding-left: 20px;
 }
@@ -54,15 +57,18 @@
 	
 }
 .progress{
-	width: 85%;
+	width: 80%;
 	height: 10px;
 }
-.rightmedia button{
+.progress-bar{
+	height: 10px;
+}
+.rightmedia button,.rightmedia a{
 	width:100px;
 }
 .rightmedia .number{
 	float: right;
-	width: 15%;
+	width: 20%;
 	line-height:10px;
 	font-size: 8px;
 }

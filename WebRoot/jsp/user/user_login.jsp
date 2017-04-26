@@ -19,8 +19,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    	<script src="js/jquery-2.2.3.min.js"></script>
    	<script type="text/javascript">
    		$(function(){
+   		//(${user});
    			//如果登陆失败失败，显示提示信息。  
-   			if(${user==null}){
+   			if(${login==false}){
    				$("#alert").show();
    			}
    			//点击input标签提示信息消失
@@ -56,7 +57,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		    <h4 class="title">
 			    <a class="active">登录</a>
 			    <b>.</b>
-			    <a href="<%=basePath%>/jsp/user/user_register.jsp">注册</a>
+			    <a href="<%=basePath%>jsp/user/user_register.jsp">注册</a>
 		    </h4>
 	    </div>
         <div class="row">
