@@ -16,7 +16,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <link href="<%=basePath%>css/font-awesome.min.css" rel="stylesheet" type="text/css"> 
  	<script src="<%=basePath%>js/jquery-2.2.3.min.js"></script>
     <script src="<%=basePath%>js/bootstrap.min.js" ></script>
-
+	<script type="text/javascript">
+		$(function(){
+    		//如果用户不为空
+    		if(${user!=null}){
+    			//将用户名显示在页面
+    			$("#login").text('${user.user_Name}');
+    			
+    			//将“个人中心”显示在页面
+    			$("#personal").show();
+    			
+    			//将“注销”文字显示在页面
+    			$("#logout").show();
+    			
+    			//将用户名的链接设置为用户详情页面
+    			$("#login").attr('href','user/detail');
+    		}
+    	});
+	</script>
   </head>
   
   <body>

@@ -38,7 +38,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    			<div class="media">	
 					<br>		 
 				        <a class="pull-left" href="project/detail?pro_id=${project.id }">
-				            <img class="media-object" src="./img/list1.jpg">
+				            <img class="media-object" src="img/${project.id }.jpg">
 				        </a>
 				        <div class="media-body">
 							<div class="leftmedia">

@@ -15,7 +15,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" type="text/css" href="<%=basePath%>css/bootstrap.min.css">
  	<link rel="stylesheet" type="text/css" href="<%=basePath%>css/index.css">
  		<link rel="stylesheet" type="text/css" href="<%=basePath%>css/nav.css">
-    <link href="<%=basePath%>css/font-awesome.min.css" rel="stylesheet" type="text/css"> 
+    <link href="<%=basePath%>css/font-awesome.min.css" rel="stylesheet"    type="text/css"> 
  	<script src="<%=basePath%>js/jquery-2.2.3.min.js"></script>
     <script src="<%=basePath%>js/bootstrap.min.js" ></script>
    
@@ -82,7 +82,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<!--活动标题  -->
 							<!-- 图片 -->
 				        	<a class="pull-left" href="project/detail?pro_id=${project.id }">
-				            	<img class="media-object" src="./img/list1.jpg">
+				            	<img class="media-object" src="img/${project.id }.jpg">
 				        	</a>
 				        
 				        	<div class="media-body">

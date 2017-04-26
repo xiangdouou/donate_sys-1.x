@@ -32,10 +32,9 @@ public class LoginFilter implements Filter {
         
         User user = (User) session.getAttribute("user");
         String url=request.getHeader("REFERER");
-        //String url=request.getRequestURI();
         //记住被拦截的页面，（以便登陆之后可以直接跳转）
         session.setAttribute("url",url);
-         if(user==null)  
+        if(user==null)  
         {  
               //判断获取的路径不为空且不是访问登录页面或执行登录操作时跳转  
              if(url!=null && !url.equals("") && ( url.indexOf("Login")<0 && url.indexOf("login")<0 ))  

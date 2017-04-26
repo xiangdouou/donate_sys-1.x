@@ -49,7 +49,7 @@ public class UserDetail extends HttpServlet {
 						}
 						
 						//如果是修改个人信息
-						else if(type.equals("money")){
+						else if(type.equals("myinfo")){
 							response.sendRedirect("../jsp/user/user_detail_myinfo.jsp?list=li4");
 						}
 						

@@ -24,6 +24,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     			//将用户名显示在页面
     			$("#login").text('${user.user_Name}');
     			
+    			if(${user.user_Name!='admin'})
     			//将“个人中心”显示在页面
     			$("#personal").show();
     			

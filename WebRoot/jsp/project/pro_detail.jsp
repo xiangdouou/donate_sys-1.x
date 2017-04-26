@@ -32,7 +32,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		    </div>
 		    		 <div class="row detailrow">
 		    	<div class="col-xs-6">
-		    		<img src="<%=basePath%>img/d1.jpg">
+		    		<img src="<%=basePath%>img/${cur_project.id}.jpg">
 		    		<span class="real-icon"></span>
 		    	</div>
 				<div class="col-xs-6 detailinfo">
@@ -63,7 +63,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								 <div class="moneydiv">
 								 	<form action="${pageContext.request.contextPath}/project/donate?type=${cur_project.pro_Type }" method="post">  
 								 		金额：
-									 	<input type="number" name="money_Number" step="20" min="20">
+									 	<input type="number" required="required" name="money_Number" step="20" min="20">
 									 	<button type="submit" class="btn btn-success btn-sm">我要捐钱</button>
 								 	</form>
 								 </div>
@@ -82,7 +82,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									 		<option>玩具</option>
 									 	</select>
 									 	数量：
-									 	<input type="number" name="goods_Number" min="1">
+									 	<input type="number" required="required" name="goods_Number" min="1">
 									 	<button type="submit" class="btn btn-success btn-sm">我要捐物</button>
 								 	</form>
 								 </div>
