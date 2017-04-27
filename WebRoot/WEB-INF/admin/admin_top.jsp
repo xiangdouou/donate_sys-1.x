@@ -22,15 +22,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     		if(${user!=null}){
     			//将用户名显示在页面
     			$("#login").text('${user.user_Name}');
-    			
-    			//将“个人中心”显示在页面
-    			$("#personal").show();
-    			
+    			 			
     			//将“注销”文字显示在页面
     			$("#logout").show();
     			
     			//将用户名的链接设置为用户详情页面
-    			$("#login").attr('href','user/detail');
+    			$("#login").attr('href','admin/projectlist?pro_status=all&page=1');
     		}
     	});
 	</script>

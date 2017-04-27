@@ -16,8 +16,41 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <link href="<%=basePath%>css/font-awesome.min.css" rel="stylesheet" type="text/css"> 
  	<script src="<%=basePath%>js/jquery-2.2.3.min.js"></script>
     <script src="<%=basePath%>js/bootstrap.min.js" ></script>
-    <script src="<%=basePath%>js/project.js" ></script>
+    <script src="<%=basePath%>js/project.js"></script>
     <script type="text/javascript">
+     function doUpload() {  //Ajax异步上传图片  
+	     var formData = new FormData($("#uploadForm")[0]);    
+	     $.ajax({    
+	          url:'<%=basePath%>UploadImage', 
+	          type: 'POST',    
+	          data:  new FormData($('#uploadForm')[0]),   
+	          async: false,    
+	          cache: false,    
+	          contentType: false,    
+	          processData: false,    
+	          success: function (returndata) {    
+	              document.getElementById("showpic").src="${PIC}";/*这是预览图片用的，自己在文件上传表单外添加*/  
+	          },    
+	          error: function (returndata) {    
+	              alert(returndata);    
+	          }    
+     });    
+}
+   
+ function end(){
+     var endtime = $('#endTime').val();
+     var starttime = $('#startTime').val();
+     var start = new Date(starttime.replace("-", "/").replace("-", "/"));
+     var end = new Date(endtime.replace("-", "/").replace("-", "/"));
+     if (end <=start) {
+         alert('结束日期不能小于开始日期！');
+         $('#endTime').val(null);
+         return false;
+     }
+     else {
+         return true;
+     }};
+    
 	$(function(){
 		//点击input标签提示信息消失
 		$("input").click(function(){
@@ -80,15 +113,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					            </p>
 					        </form>
 					       	<div class="imgdiv">
-					       		<img id="showpic" src="${PIC}" >
+					       		<img id="showpic" src="img/${PIC}" >
 					       	</div>
 				       		<br>	
 				        </div>
 				        
 				        <div class="col-xs-7">
-				        <div class="alert alert-danger" style="display: none;">
-				    		活动标题已存在！！！
-				    	</div>
+					        <div class="alert alert-danger" style="display: none;">
+					    		活动标题已存在！！！
+					    	</div>
 				        	<form action="admin/projectadd" method="post">				
 					        	<span>项目标题</span>
 					        	<input class="form-control" name="pro_Title" type="text" value="${addproject.pro_Title}" placeholder="请输入项目标题" required="required">

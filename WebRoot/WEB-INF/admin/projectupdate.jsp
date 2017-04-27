@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTf-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -19,10 +20,44 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <script src="<%=basePath%>js/bootstrap.min.js" ></script>
     <script src="<%=basePath%>js/project.js" ></script>
     <script type="text/javascript">
+     function doUpload() {  //Ajax异步上传图片  
+	     var formData = new FormData($("#uploadForm")[0]);    
+	     $.ajax({    
+	          url:'<%=basePath%>UploadImage', 
+	          type: 'POST',    
+	          data:  new FormData($('#uploadForm')[0]),   
+	          async: false,    
+	          cache: false,    
+	          contentType: false,    
+	          processData: false,    
+	          success: function (returndata) {    
+	              //$("#showpic").attr('src',${PIC}); ;/*这是预览图片用的，自己在文件上传表单外添加*/  
+	          	document.getElementById("showpic").src="img/1.jpg";
+	          },    
+	          error: function (returndata) {    
+	              alert(returndata);    
+	          }    
+     });    
+}
+   
+ function end(){
+     var endtime = $('#endTime').val();
+     var starttime = $('#startTime').val();
+     var start = new Date(starttime.replace("-", "/").replace("-", "/"));
+     var end = new Date(endtime.replace("-", "/").replace("-", "/"));
+     if (end <=start) {
+         alert('结束日期不能小于开始日期！');
+         $('#endTime').val(null);
+         return false;
+     }
+     else {
+         return true;
+     }};
+    
 $(function(){
 		//点击input标签提示信息消失
 		$("input").click(function(){
-			$("#alert").hide();
+			$(".alert").hide();
 		});
 		if(${projectUpdate==false}){
 			$(".alert").show();
@@ -77,29 +112,36 @@ $(function(){
 					<br>				 
 				        <div class="col-xs-5">
 					        <!-- 上传图片 -->
-					        <form method="post" id="uploadForm" enctype="multipart/form-data">				        	
+					        <form method="post" id="uploadForm" enctype="multipart/form-data">	
+					        	<input type="hidden" name="id" value="${updateproject.id}"/>			        	
 					       		<input type="file"  id="pic" name="pic" />   
 					       		<p class="pull-right">
 					        		<button class="btn btn-success"  onclick="doUpload();">添加图片</button>
 					            </p>
 					        </form>
+					        <br>
+					    
+					      
 					       	<div class="imgdiv">
-					       		<img id="showpic" src="${PIC}" >
+					       		<img id="showpic" src="img/${updateproject.id}.jpg" >
 					       	</div>
 				       		<br>	
 				        </div>
 				        <div class="col-xs-7">
-				        <div class="alert alert-danger" style="display: none;">
-				    		活动标题已存在！！！
-				    	</div>
+					        <div class="alert alert-danger" style="display: none;">
+					    		活动标题已存在！！！
+					    	</div>
 				        	<form action="admin/projectupdate" method="post">	
-				        		<input type="hidden" name="id" value="${updateproject.id}"/>				
+				        		<input type="hidden" name="id" value="${updateproject.id}"/>
+				        		<input type="hidden" name="pro_Type" value="${updateproject.pro_Type}"/>	
+				        		<input type="hidden" name="pro_CurNumber" value="${updateproject.pro_CurNumber}"/>	
+				        		<input type="hidden" name="pro_CurPeoples" value="${updateproject.pro_CurPeoples}"/>				
 					        	<span>活动标题</span>
 					        	<input class="form-control" name="pro_Title" value="${updateproject.pro_Title }" type="text">
 					     	    <span>项目简介</span>
 					        	<textarea rows="3" cols="30" name="pro_Des" > ${updateproject.pro_Des }</textarea><br>
 					        	<span>筹款目标</span>
-								<input class="form-control" type="text" name="pro_TatgetNumber" value="${updateproject.pro_TargetNumber }">
+								<input class="form-control" type="text" name="pro_TargetNumber" value="${updateproject.pro_TargetNumber }">
 								<span>筹款起止时间 </span>
 								<p>
 									<input class="form-control left" type="date" name="pro_StartTime" value="${updateproject.pro_StartTime }">
@@ -110,9 +152,9 @@ $(function(){
 								<input class="form-control" type="text" name="pro_Sponsor" value="${updateproject.pro_Sponsor }">
 								<span>项目状态</span>
 								<select class="form-control" name="pro_Status">
-								<option selected="selected">募捐中</option>
-								<option>执行中</option>
-								<option>已结束</option>
+								<option selected="selected" value="donate">募捐中</option>
+								<option value="execute">执行中</option>
+								<option value="end">已结束</option>
 								</select><br>
 								<button class="btn btn-success pull-right">修改活动</button>															
 				      		</form>	  

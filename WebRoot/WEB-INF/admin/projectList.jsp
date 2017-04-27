@@ -104,7 +104,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									<!-- 进度条数字 -->
 									<span class="text-muted number text-right"><fmt:formatNumber  type="number" value="${project.pro_CurNumber>=project.pro_TargetNumber?100:project.pro_CurNumber*100/project.pro_TargetNumber}" maxFractionDigits="0"/> %</span> 
 								   	<p>
-										<a class="btn btn-success btn-sm" href="<%=basePath%>admin/alertproject.jsp">修改</a> 			
+										<a class="btn btn-success btn-sm" href="<%=basePath%>admin/projectoperate?type=update&pro_id=${project.id}">修改</a> 			
 										<button class="btn btn-success btn-sm">删除</button>
 									</p>
 								</div>

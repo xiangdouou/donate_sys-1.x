@@ -28,6 +28,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     			//将“个人中心”显示在页面
     			$("#personal").show();
     			
+    			if(${user.user_Name=='admin'})
+    			//将“管理活动”显示在页面
+    			$("#adminoperate").show();
+    			
     			//将“注销”文字显示在页面
     			$("#logout").show();
     			
@@ -48,6 +52,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <li><a href="##">公益首页</a></li>
             <li><a href="project/page?page=0">公益活动</a></li>     
             <li><a href="user/detail" id="personal" style="display: none;">个人中心</a></li>
+            <li><a href="admin/projectlist?pro_status=all&page=1" id="adminoperate" style="display: none;">管理活动</a></li>
         </ul>
 
         <div class="navbar-right text-danger">

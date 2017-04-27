@@ -55,9 +55,9 @@ public class ProjectAdd extends HttpServlet {
 			//保存活动
 			projectDao.sava(project);
 			
-			//根据活动名获取活动,
-		
-			
+			//保存活动后将显示图片PIC设置为null
+			request.getSession().setAttribute("PIC",null);
+				
 			//获取刚刚上传的图片的名
 			String fileName=(String) request.getSession().getAttribute("fileName");
 			//获取项目绝对路径
@@ -65,6 +65,7 @@ public class ProjectAdd extends HttpServlet {
 	        String picPath = basePath+"img\\";
 	        //获取刚刚上传的图片
 			File fileimg=new File(picPath+fileName);
+			projects=projectDao.getByParam(Project.class,"pro_Title",project.getPro_Title());
 			//修改图片名
 			fileimg.renameTo(new File(picPath+projects.get(0).getId()+".jpg"));
 			
@@ -72,6 +73,7 @@ public class ProjectAdd extends HttpServlet {
 		
 		} catch (Exception e) {
 			request.getRequestDispatcher("/WEB-INF/admin/projectadd.jsp").forward(request, response);
+			e.printStackTrace();
 		}
 	
 		

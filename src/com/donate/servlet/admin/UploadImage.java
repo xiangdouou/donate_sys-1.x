@@ -24,7 +24,7 @@ public class UploadImage extends HttpServlet {
 	
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException { 
-	        String picflag = request.getParameter("picture");  
+	       // String picflag = request.getParameter("picture");  
 	        String picPath = null;  
 	    
 	            Part part = request.getPart("pic");//前台的文件标签的name,若ajax直接提交表单，这里无法获取  
@@ -32,13 +32,18 @@ public class UploadImage extends HttpServlet {
 	            //获取文件名  
 	            String fileName = file.substring(file.lastIndexOf("=")+2, file.length()-1);  
 	            request.getSession().setAttribute("fileName",fileName);
+	            System.out.println(fileName);
 	            //获取项目的部署路劲  
 	            String basePath = getServletContext().getRealPath("/");  
-	            picPath = basePath+"img\\"+fileName;  
+	            
+	            if(request.getParameter("id")!=null) //如果是更新活动，直接将图片名改为活动id.jpg
+	            	picPath=basePath+"img\\"+request.getParameter("id")+".jpg";
+	            else   //如果是添加活动，此时是无法获取活动id的，图片原名上传
+	            	picPath = basePath+"img\\"+fileName;  
 	            //上传文件到部署路劲  
 	            part.write(picPath);  
 	            //将路径存在session中方便下面显示是用  
-	            request.getSession().setAttribute("PIC","img\\"+fileName);  
+	            request.getSession().setAttribute("PIC",fileName);  
 	            //以下代码是使用了  AJax异步请求时使用的  
 //	            Gson gson = new Gson();//创建gson对象  
 //	            response.setContentType("text/json;charset=utf-8");//设置响应的方式为json  
