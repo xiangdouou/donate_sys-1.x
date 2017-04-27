@@ -54,10 +54,7 @@ public class ProjectAdd extends HttpServlet {
 			}
 			//保存活动
 			projectDao.sava(project);
-			
-			//保存活动后将显示图片PIC设置为null
-			request.getSession().setAttribute("PIC",null);
-				
+		
 			//获取刚刚上传的图片的名
 			String fileName=(String) request.getSession().getAttribute("fileName");
 			//获取项目绝对路径

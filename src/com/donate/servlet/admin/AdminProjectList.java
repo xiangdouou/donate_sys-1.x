@@ -62,6 +62,7 @@ public class AdminProjectList extends HttpServlet {
 					for(int i=0;i<page_sum && i<projects.size();i++)
 						pagePro_List.add(projects.get(i));
 					page_cur=page_nums;
+					Collections.reverse(pagePro_List);	
 				}
 				else{
 					//页码没有超出界限

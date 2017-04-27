@@ -40,7 +40,7 @@ public class ProjectPage extends HttpServlet {
 			page_nums=projects.size()/page_sum+1;
 		
 		//System.out.println(page_cur);
-		//如果页码<=0，取前6个活动
+		//如果页码<=1，取前6个活动
 		if(page_cur<=1){
 			int i;
 			//将活动列表倒序
@@ -57,6 +57,7 @@ public class ProjectPage extends HttpServlet {
 			for(int i=0;i<page_sum && i<projects.size();i++){
 				pagePro_List.add(projects.get(i));
 			}
+			Collections.reverse(pagePro_List);	
 			page_cur=page_nums;
 		}
 		else{

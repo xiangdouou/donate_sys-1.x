@@ -43,7 +43,7 @@ public class UploadImage extends HttpServlet {
 	            //上传文件到部署路劲  
 	            part.write(picPath);  
 	            //将路径存在session中方便下面显示是用  
-	            request.getSession().setAttribute("PIC",fileName);  
+	            request.getSession().setAttribute("PIC","img\\"+fileName);  
 	            //以下代码是使用了  AJax异步请求时使用的  
 //	            Gson gson = new Gson();//创建gson对象  
 //	            response.setContentType("text/json;charset=utf-8");//设置响应的方式为json  

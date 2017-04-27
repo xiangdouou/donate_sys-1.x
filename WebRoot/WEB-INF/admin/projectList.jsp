@@ -105,8 +105,33 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									<span class="text-muted number text-right"><fmt:formatNumber  type="number" value="${project.pro_CurNumber>=project.pro_TargetNumber?100:project.pro_CurNumber*100/project.pro_TargetNumber}" maxFractionDigits="0"/> %</span> 
 								   	<p>
 										<a class="btn btn-success btn-sm" href="<%=basePath%>admin/projectoperate?type=update&pro_id=${project.id}">修改</a> 			
-										<button class="btn btn-success btn-sm">删除</button>
+										<button class="btn btn-success btn-sm" data-toggle="modal" data-target="#${project.id}">删除</button>
 									</p>
+									<!--模态框 -->
+										<div class="modal"  id="${project.id}">
+
+										        <div class="modal-dialog">
+										
+										            <div class="modal-content">
+										
+										                <div class="modal-header">
+										                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+										                    <h4 class="modal-title">删除活动</h4>
+										                </div>
+										
+										                <div class="modal-body">
+										                    <p>真的要删除"${project.pro_Title}" 活动吗?</p>
+										                </div>
+										
+										                <div class="modal-footer">
+										                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+										                    <a href="admin/projectdelete?pro_id=${project.id }"><button type="button" class="btn btn-primary">删除</button></a>
+										                </div>
+										
+										            </div>
+										        </div>
+										    </div>
+										    <!-- ***** -->				
 								</div>
 							</div>
 				        </div>				        

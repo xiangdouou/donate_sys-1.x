@@ -30,10 +30,15 @@ public class ProjectOperate extends HttpServlet {
 					Integer pro_id=Integer.parseInt(request.getParameter("pro_id"));
 					List<Project> projects=projectDao.getByParam(Project.class,"id",pro_id);
 					request.setAttribute("updateproject",projects.get(0));
+					
+					String up_url=request.getHeader("REFERER");
+					request.getSession().setAttribute("up_url", up_url);
+					System.out.println(up_url);
 					request.getRequestDispatcher("/WEB-INF/admin/projectupdate.jsp").forward(request, response);
 				}
 			} catch (Exception e) {
 				request.getRequestDispatcher("/WEB-INF/admin/projectlist.jsp?pro_status=all&page=1").forward(request, response);
+				
 			}
 			
 	}

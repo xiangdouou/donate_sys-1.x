@@ -91,6 +91,13 @@
     <servlet-name>ProjectUpdate</servlet-name>
     <servlet-class>com.donate.servlet.admin.ProjectUpdate</servlet-class>
   </servlet>
+  <servlet>
+    <description>ProjectDelete</description>
+    <display-name>ProjectDelete</display-name>
+    <servlet-name>ProjectDelete</servlet-name>
+    <servlet-class>com.donate.servlet.admin.ProjectDelete</servlet-class>
+  </servlet>
+
 
 
 
@@ -186,6 +193,10 @@
   <servlet-mapping>
     <servlet-name>ProjectUpdate</servlet-name>
     <url-pattern>/admin/projectupdate</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ProjectDelete</servlet-name>
+    <url-pattern>/admin/projectdelete</url-pattern>
   </servlet-mapping>
   
  

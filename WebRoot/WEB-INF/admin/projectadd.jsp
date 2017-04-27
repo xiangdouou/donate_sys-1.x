@@ -113,7 +113,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					            </p>
 					        </form>
 					       	<div class="imgdiv">
-					       		<img id="showpic" src="img/${PIC}" >
+					       		<img id="showpic" src="${PIC}" >
 					       	</div>
 				       		<br>	
 				        </div>
