@@ -44,7 +44,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<div class="leftmedia">
 								
 								<!-- 活动标题 -->
-					        	<span class="media-heading h4"><a href="project/detail?pro_id=${project.id }">${project.pro_Title } </a></span>
+					        	<span class="media-heading h4"><a class="text-a" href="project/detail?pro_id=${project.id }">${project.pro_Title } </a></span>
 					     		<div class="descript small">
 					            	<span class="text-muted">项目简介&nbsp;|&nbsp;</span>
 					            	<!-- 项目简介 -->

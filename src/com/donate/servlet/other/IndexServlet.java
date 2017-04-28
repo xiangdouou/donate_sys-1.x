@@ -15,7 +15,11 @@ import javax.servlet.http.HttpServletResponse;
 import com.donate.dao.EntityDao;
 import com.donate.dao.EntityDaoImpl;
 import com.donate.entity.Project;
-
+/**
+ * 
+ * @author Fog
+ *
+ */
 public class IndexServlet extends HttpServlet {
 
 	//初始化接口

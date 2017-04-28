@@ -26,6 +26,7 @@ public class ProjectOperate extends HttpServlet {
 				if(type.equals("add")){
 					request.getRequestDispatcher("/WEB-INF/admin/projectadd.jsp").forward(request, response);
 				}
+				//如果是更新活动
 				if(type.equals("update")){
 					Integer pro_id=Integer.parseInt(request.getParameter("pro_id"));
 					List<Project> projects=projectDao.getByParam(Project.class,"id",pro_id);
@@ -33,7 +34,6 @@ public class ProjectOperate extends HttpServlet {
 					
 					String up_url=request.getHeader("REFERER");
 					request.getSession().setAttribute("up_url", up_url);
-					System.out.println(up_url);
 					request.getRequestDispatcher("/WEB-INF/admin/projectupdate.jsp").forward(request, response);
 				}
 			} catch (Exception e) {

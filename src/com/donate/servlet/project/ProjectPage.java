@@ -13,7 +13,12 @@ import javax.servlet.http.HttpServletResponse;
 import com.donate.dao.EntityDao;
 import com.donate.dao.EntityDaoImpl;
 import com.donate.entity.Project;
-
+/**
+ * 
+ * @author Fog
+ *功能：活动列表分页
+ *
+ */
 public class ProjectPage extends HttpServlet {
 
 	private int page_nums=0;   //总页数
@@ -47,7 +52,6 @@ public class ProjectPage extends HttpServlet {
 			Collections.reverse(projects);	
 			for(i=0;i<page_sum && i<projects.size();i++){
 				pagePro_List.add(projects.get(i));
-				System.out.println("i"+i);
 			}
 			page_cur=1;
 			//System.out.println("pagePro_List size"+pagePro_List.size());

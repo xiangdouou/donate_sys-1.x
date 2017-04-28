@@ -33,26 +33,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
 
   <body>
- 	 <div class="navbar navbar-default navbar-fixed-top">
-
-        <div class="navbar-header">
-           　        	<a href="##" class="navbar-brand">爱心公益网 </a>
-        </div>
-        <ul class="nav navbar-nav">
-            <li><a href="##">公益首页</a></li>
-            <li><a href="project/page?page=0">公益活动</a></li>     
-            <li><a href="jsp/user/user_detail.jsp" id="personal" style="display: none;">个人中心</a></li>
-        </ul>
-
-       
-        <div class="navbar-right text-danger">
-        	欢迎，<span id="user_Name"></span><a href="jsp/user/user_login.jsp" id="login">请登录</a>&nbsp;&nbsp;<span><a href="user/logout" class="text-danger" id="logout" style="display: none;">注销</a></span>
-        </div>
-    </div>
+ 	<c:import url="../top.jsp"/>
+ 	 
     <div class="container main">
-       <div class="alert alert-danger" id="alert" style="display: none;">
-    		用户名或密码错误！！！
-   	   </div>
+     
 	    <div class="row sign">
 		    <h4 class="title">
 			    <a class="active">登录</a>
@@ -75,7 +59,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <button class="btn btn-info btn-lg btn-block" type="submit">登录</button>
                     </div>
                 </form>
-                </div>
+                 <div class="alert alert-danger" id="alert" style="display: none;">
+		    		用户名或密码错误！！！
+		   	  	 </div>
+              </div>
                 
             </div>
 

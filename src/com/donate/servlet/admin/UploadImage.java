@@ -11,7 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
 import com.google.gson.Gson;
-    
+/**
+ *     
+ * @author Fog
+ *功能：ajax异步上传图片后台逻辑
+ */
 @MultipartConfig
 public class UploadImage extends HttpServlet {
 
@@ -24,7 +28,6 @@ public class UploadImage extends HttpServlet {
 	
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException { 
-	       // String picflag = request.getParameter("picture");  
 	        String picPath = null;  
 	    
 	            Part part = request.getPart("pic");//前台的文件标签的name,若ajax直接提交表单，这里无法获取  
@@ -32,7 +35,6 @@ public class UploadImage extends HttpServlet {
 	            //获取文件名  
 	            String fileName = file.substring(file.lastIndexOf("=")+2, file.length()-1);  
 	            request.getSession().setAttribute("fileName",fileName);
-	            System.out.println(fileName);
 	            //获取项目的部署路劲  
 	            String basePath = getServletContext().getRealPath("/");  
 	            
@@ -43,11 +45,12 @@ public class UploadImage extends HttpServlet {
 	            //上传文件到部署路劲  
 	            part.write(picPath);  
 	            //将路径存在session中方便下面显示是用  
-	            request.getSession().setAttribute("PIC","img\\"+fileName);  
-	            //以下代码是使用了  AJax异步请求时使用的  
-//	            Gson gson = new Gson();//创建gson对象  
-//	            response.setContentType("text/json;charset=utf-8");//设置响应的方式为json  
-//	            response.getWriter().print(gson.toJson("<font color=red>用户名或密码错误</font>"));  
+	            request.getSession().setAttribute("PIC","img\\"+fileName);
+	            
+	            //
+	            response.setHeader("Pragma","No-cache");
+	            response.setHeader("Cache-Control","no-cache"); 
+	            response.setDateHeader("Expires", 0); 
 	        	}
 	       
 }

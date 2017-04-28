@@ -17,7 +17,11 @@ import com.donate.entity.Goods;
 import com.donate.entity.Money;
 import com.donate.entity.Project;
 import com.donate.entity.User;
-
+/**
+ * 
+ * @author Fog
+ *功能：用户信息操作跳转后台控制
+ */
 public class UserDetail extends HttpServlet {
 
 	//定义操作数据库接口	

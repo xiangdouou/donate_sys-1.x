@@ -7,7 +7,11 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+/**
+ * 
+ * @author Fog
+ *功能：用户注销sevlet
+ */
 public class UserLogout extends HttpServlet {
 
 	

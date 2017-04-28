@@ -99,10 +99,7 @@
 	display: inline-block;
 	margin-bottom: 15px;
 }
-.media-heading:hover{
-	background-color:  #438513;
-	color: white;
-}
+
 .descript{
 	font-size: 13px;
 }

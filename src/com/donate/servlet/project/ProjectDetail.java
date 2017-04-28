@@ -20,6 +20,7 @@ import com.donate.entity.Project;
  *功能：查看活动详情之前的操作
  */
 public class ProjectDetail extends HttpServlet {
+	
 	private EntityDao<Project> projectDao=new EntityDaoImpl<Project>();
 	private EntityDao<Money> moneyDao=new EntityDaoImpl<Money>();
 	private EntityDao<Goods> goodsDao=new EntityDaoImpl<Goods>();

@@ -14,7 +14,11 @@ import javax.servlet.http.HttpServletResponse;
 import com.donate.dao.EntityDao;
 import com.donate.dao.EntityDaoImpl;
 import com.donate.entity.Project;
-
+/**
+ * 
+ * @author Fog
+ *功能：管理员活动列表分页（所有活动）
+ */
 public class AdminProjectList extends HttpServlet {
 
 	private int page_nums=0;   //总页数
@@ -32,7 +36,7 @@ public class AdminProjectList extends HttpServlet {
 				pagePro_List=new ArrayList<Project>();
 				//获取请求的活动参数
 				String pro_status=request.getParameter("pro_status");
-				//如果参数为空，查出所有活动
+				//查出所有活动
 				if(pro_status.equals("all"))
 					projects=projectDao.getAll(Project.class);
 				else{
@@ -47,22 +51,25 @@ public class AdminProjectList extends HttpServlet {
 					page_nums=projects.size()/page_sum+1;
 				
 				//System.out.println(page_cur);
-				//如果页码<=0，取前6个活动
+				//如果页码<=1，取前6个活动
 				if(page_cur<=1){
 					int i;
 					//将活动列表倒序
 					Collections.reverse(projects);	
-					for(i=0;i<page_sum && i<projects.size();i++)
+					for(i=0;i<page_sum && i<projects.size();i++){
 						pagePro_List.add(projects.get(i));
+						System.out.println("i"+i);
+					}
 					page_cur=1;
+					//System.out.println("pagePro_List size"+pagePro_List.size());
 		 		}
-				
 				else if(page_cur>=page_nums){  
 					//如果页码>=总页数，
-					for(int i=0;i<page_sum && i<projects.size();i++)
+					for(int i=0;i<page_sum && i<projects.size();i++){
 						pagePro_List.add(projects.get(i));
-					page_cur=page_nums;
+					}
 					Collections.reverse(pagePro_List);	
+					page_cur=page_nums;
 				}
 				else{
 					//页码没有超出界限
@@ -81,9 +88,7 @@ public class AdminProjectList extends HttpServlet {
 			catch (Exception e) {
 				e.printStackTrace();
 			}
-		
-		
-		
+			
 	}
 
 	

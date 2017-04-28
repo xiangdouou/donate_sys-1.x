@@ -12,7 +12,11 @@ import javax.servlet.http.HttpServletResponse;
 import com.donate.dao.EntityDao;
 import com.donate.dao.EntityDaoImpl;
 import com.donate.entity.Project;
-
+/**
+ * 
+ * @author Fog
+ *功能：添加活动后台逻辑
+ */
 public class ProjectAdd extends HttpServlet {
 
 	//定义接口
@@ -66,6 +70,7 @@ public class ProjectAdd extends HttpServlet {
 			//修改图片名
 			fileimg.renameTo(new File(picPath+projects.get(0).getId()+".jpg"));
 			
+			//跳转到活动列表分页servlet
 			response.sendRedirect("projectlist?pro_status=all&page=0");
 		
 		} catch (Exception e) {
