@@ -24,13 +24,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     function selectchange(index){   
     		window.location.href="<%=basePath%>admin/projectlist?pro_status="+index +"&page=0";
     }
+    function reurl() {
+
+    url = location.href; //把当前页面的地址赋给变量 url
+
+    var times = url.split("&"); //分切变量 url 分隔符号为 "?"
+
+    if (times[2] != 1) { //如果?后的值不等于1表示没有刷新
+
+        url += "&1"; //把变量 url 的值加入 ?1
+
+      location.replace(url); //刷新页面
+      //location.reload();
+
+    }
+}
     $(function(){
     	/* 设置下拉菜单选中项为地址中的活动状态参数 */
         $("#selector").val('${param.pro_status}');
     });
 	</script>
   </head>  
-  <body>
+  <body  onload="reurl()">
 	<jsp:include page="admin_top.jsp"></jsp:include>
     <div class="container">
 	    <div class="row col-xs-10 col-xs-offset-1">

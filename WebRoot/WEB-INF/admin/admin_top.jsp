@@ -42,12 +42,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <li><a href="<%=basePath%>admin/projectlist?pro_status=all&page=0">活动列表</a></li>
             <li><a href="<%=basePath%>admin/projectoperate?type=add">添加活动</a></li>     
         </ul>
-        <form action="##" class="navbar-form navbar-left">
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="请输入关键词" />
-            </div>
-            <button type="submit" class="btn btn-default">搜索</button>
-        </form>
+   
          <div class="navbar-right text-danger">
         	欢迎，<span id="user_Name"></span><a href="<%=basePath%>jsp/user/user_login.jsp" id="login">请登录</a>&nbsp;&nbsp;<span><a href="user/logout" class="text-danger" id="logout" style="display: none;">注销</a></span>
         </div>

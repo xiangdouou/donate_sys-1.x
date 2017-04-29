@@ -58,10 +58,8 @@ public class AdminProjectList extends HttpServlet {
 					Collections.reverse(projects);	
 					for(i=0;i<page_sum && i<projects.size();i++){
 						pagePro_List.add(projects.get(i));
-						System.out.println("i"+i);
 					}
 					page_cur=1;
-					//System.out.println("pagePro_List size"+pagePro_List.size());
 		 		}
 				else if(page_cur>=page_nums){  
 					//如果页码>=总页数，
@@ -82,8 +80,8 @@ public class AdminProjectList extends HttpServlet {
 				}
 				//将获取到的6个活动放到session
 				request.getSession().setAttribute("adminPro_List", pagePro_List);
-				//response.sendRedirect("../jsp/project/pro_list.jsp?page="+page_cur);
 				request.getRequestDispatcher("/WEB-INF/admin/projectList.jsp?pro_status="+pro_status+"&page="+page_cur).forward(request, response);
+				request.getSession().setAttribute("up_url","projectlist?pro_status="+pro_status+"&page="+page_cur);
 			}
 			catch (Exception e) {
 				e.printStackTrace();

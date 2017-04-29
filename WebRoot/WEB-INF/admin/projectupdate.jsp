@@ -31,8 +31,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	          contentType: false,    
 	          processData: false,    
 	          success: function (returndata) {    
-	              //$("#showpic").attr('src',${PIC}); ;/*这是预览图片用的，自己在文件上传表单外添加*/  
-	          	document.getElementById("showpic").src="img/1.jpg";
+	            	$("#showpic").attr("src","${PIC}");/*这是预览图片用的，自己在文件上传表单外添加*/  
+	        		//location.replace(location.href);
+	        		location.reload();
 	          },    
 	          error: function (returndata) {    
 	              alert(returndata);    
@@ -55,6 +56,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      }};
     
 $(function(){
+		
 		//点击input标签提示信息消失
 		$("input").click(function(){
 			$(".alert").hide();
@@ -114,16 +116,15 @@ $(function(){
 					        <!-- 上传图片 -->
 					        <form method="post" id="uploadForm" enctype="multipart/form-data">	
 					        	<input type="hidden" name="id" value="${updateproject.id}"/>			        	
-					       		<input type="file"  id="pic" name="pic" />   
-					       		<p class="pull-right">
-					        		<button class="btn btn-success"  onclick="doUpload();">添加图片</button>
-					            </p>
+					       		<a href="javascript:;" class="a-upload">			        	
+					       			<input type="file"  id="pic" name="pic" onchange="doUpload();"/>点击这里上传图片   
+					       		</a>	   			  
 					        </form>
 					        <br>
 					    
-					      
-					       	<div class="imgdiv">
-					       		<img id="showpic" src="img/${updateproject.id}.jpg" >
+					     
+	     		       	<div class="imgdiv">
+					       		<img id="showpic" src="${PIC }" >
 					       	</div>
 				       		<br>	
 				        </div>

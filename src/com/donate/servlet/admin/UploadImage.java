@@ -37,20 +37,13 @@ public class UploadImage extends HttpServlet {
 	            request.getSession().setAttribute("fileName",fileName);
 	            //获取项目的部署路劲  
 	            String basePath = getServletContext().getRealPath("/");  
-	            
-	            if(request.getParameter("id")!=null) //如果是更新活动，直接将图片名改为活动id.jpg
-	            	picPath=basePath+"img\\"+request.getParameter("id")+".jpg";
-	            else   //如果是添加活动，此时是无法获取活动id的，图片原名上传
+	   
 	            	picPath = basePath+"img\\"+fileName;  
-	            //上传文件到部署路劲  
+	            //上传文件
 	            part.write(picPath);  
-	            //将路径存在session中方便下面显示是用  
-	            request.getSession().setAttribute("PIC","img\\"+fileName);
 	            
-	            //
-	            response.setHeader("Pragma","No-cache");
-	            response.setHeader("Cache-Control","no-cache"); 
-	            response.setDateHeader("Expires", 0); 
+	            //将刚刚上传的文件路径存在session中方便页面显示  
+	            request.getSession().setAttribute("PIC","img\\"+fileName);
 	        	}
 	       
 }

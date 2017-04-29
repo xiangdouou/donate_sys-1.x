@@ -31,8 +31,8 @@ public class ProjectDelete extends HttpServlet {
 				response.sendRedirect(de_url);
 				
 			} catch (Exception e) {
+				//发生异常跳转到活动列表页面
 				request.getRequestDispatcher("projectlist?pro_status=all&page=1").forward(request, response);
-				e.printStackTrace();
 			}
 	}
 

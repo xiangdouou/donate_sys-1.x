@@ -47,7 +47,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					 <!-- 已筹数 -->
 					 <p>
 					 	<img src="<%=basePath%>img/icon2.png">
-					 	<span class="text-danger">${cur_project.pro_CurNumber}</span>元/件
+					 	<span class="text-danger">${cur_project.pro_CurNumber}</span>
+					 		${cur_project.pro_Type==1?'元':'件' }
 					 </p>
 					 <!-- 捐款起止时间 -->
 					 <div class="text-muted">时间：<span>${cur_project.pro_StartTime}</span>至<span>${cur_project.pro_EndTime}</span></div>

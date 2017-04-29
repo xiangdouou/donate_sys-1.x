@@ -58,7 +58,9 @@ public class ProjectAdd extends HttpServlet {
 			}
 			//保存活动
 			projectDao.sava(project);
-		
+			
+			//将session中的上传图片地址设为null
+			request.getSession().setAttribute("PIC",null);
 			//获取刚刚上传的图片的名
 			String fileName=(String) request.getSession().getAttribute("fileName");
 			//获取项目绝对路径
@@ -74,8 +76,8 @@ public class ProjectAdd extends HttpServlet {
 			response.sendRedirect("projectlist?pro_status=all&page=0");
 		
 		} catch (Exception e) {
+			//发生异常跳转到添加活动页面
 			request.getRequestDispatcher("/WEB-INF/admin/projectadd.jsp").forward(request, response);
-			e.printStackTrace();
 		}
 	
 		

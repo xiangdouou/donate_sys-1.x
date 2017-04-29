@@ -17,6 +17,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  	<script src="<%=basePath%>js/jquery-2.2.3.min.js"></script>
     <script src="<%=basePath%>js/bootstrap.min.js" ></script>
     <script src="<%=basePath%>js/project.js"></script>
+    
     <script type="text/javascript">
      function doUpload() {  //Ajax异步上传图片  
 	     var formData = new FormData($("#uploadForm")[0]);    
@@ -29,7 +30,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	          contentType: false,    
 	          processData: false,    
 	          success: function (returndata) {    
-	              document.getElementById("showpic").src="${PIC}";/*这是预览图片用的，自己在文件上传表单外添加*/  
+	             // document.getElementById("showpic").src="${PIC}";/*这是预览图片用的，自己在文件上传表单外添加*/  
+	          	 $("#showpic").attr("src","${PIC}");	
+	          	 location.replace(location.href);
 	          },    
 	          error: function (returndata) {    
 	              alert(returndata);    
@@ -76,7 +79,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		 }).trigger("mouseleave");  
 });
 </script>
-    
+  
+ 
   </head>
   <body>
 	<jsp:include page="admin_top.jsp"></jsp:include>
@@ -106,11 +110,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<br>				 
 				        <div class="col-xs-5">
 					        <!-- 上传图片 -->
-					        <form method="post" id="uploadForm" enctype="multipart/form-data">				        	
-					       		<input type="file"  id="pic" name="pic" />   
-					       		<p class="pull-right">
-					        		<button class="btn btn-success"  onclick="doUpload();">添加图片</button>
-					            </p>
+					        <form method="post" id="uploadForm" enctype="multipart/form-data">	
+					        	<a href="javascript:;" class="a-upload">			        	
+					       			<input type="file"  id="pic" name="pic" onchange="doUpload();"/>点击这里上传图片 
+					       		</a>			
 					        </form>
 					       	<div class="imgdiv">
 					       		<img id="showpic" src="${PIC}" >

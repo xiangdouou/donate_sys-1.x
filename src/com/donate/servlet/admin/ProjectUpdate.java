@@ -46,7 +46,6 @@ public class ProjectUpdate extends HttpServlet {
 			project.setPro_TargetNumber(Integer.parseInt(request.getParameter("pro_TargetNumber")));
 			
 			request.getSession().setAttribute("updateproject",project);
-			String up_url=(String) request.getSession().getAttribute("up_url");
 			List<Project> projects;
 			projects = projectDao.getByParam(Project.class,"pro_Title",project.getPro_Title());
 			System.out.println(projects.size());
@@ -58,12 +57,29 @@ public class ProjectUpdate extends HttpServlet {
 			}
 			
 			//修改活动
-			projectDao.update(project);		
+			projectDao.update(project);	
 			
-			System.out.println(up_url);
+			
+			//将session中的上传图片地址设为null
+			request.getSession().setAttribute("PIC",null);
+			//获取刚刚上传的图片的名
+			String fileName=(String) request.getSession().getAttribute("fileName");
+			//获取项目绝对路径
+			String basePath = getServletContext().getRealPath("/");  
+	        String picPath = basePath+"img\\";
+	        
+	        File before_img=new File(picPath+projects.get(0).getId()+".jpg");
+	        before_img.delete();
+	        //获取刚刚上传的图片
+			File fileimg=new File(picPath+fileName);
+			projects=projectDao.getByParam(Project.class,"pro_Title",project.getPro_Title());
+			//修改图片名
+			fileimg.renameTo(new File(picPath+projects.get(0).getId()+".jpg"));
+			String up_url=(String) request.getSession().getAttribute("up_url");
 			response.sendRedirect(up_url);
 			
 		} catch (Exception e) {
+			//发生异常跳转到更新活动页面
 			request.getRequestDispatcher("/WEB-INF/admin/projectupdate.jsp").forward(request, response);
 			e.printStackTrace();
 		}
