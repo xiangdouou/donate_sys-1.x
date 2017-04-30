@@ -28,10 +28,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	          data:  new FormData($('#uploadForm')[0]),   
 	          async: false,    
 	          cache: false,    
+	          ifModified :true,
 	          contentType: false,    
-	          processData: false,    
+	          processData: false, 
 	          success: function (returndata) {    
-	            	$("#showpic").attr("src","${PIC}");/*这是预览图片用的，自己在文件上传表单外添加*/  
+	            	$("#showpic").attr("src","img/${updateproject.id }.jpg");/*这是预览图片用的，自己在文件上传表单外添加*/  
 	        		//location.replace(location.href);
 	        		location.reload();
 	          },    
@@ -117,14 +118,14 @@ $(function(){
 					        <form method="post" id="uploadForm" enctype="multipart/form-data">	
 					        	<input type="hidden" name="id" value="${updateproject.id}"/>			        	
 					       		<a href="javascript:;" class="a-upload">			        	
-					       			<input type="file"  id="pic" name="pic" onchange="doUpload();"/>点击这里上传图片   
+					       			<input type="file"  id="pic" name="pic" onchange="doUpload();"/>更改图片   
 					       		</a>	   			  
 					        </form>
 					        <br>
 					    
 					     
 	     		       	<div class="imgdiv">
-					       		<img id="showpic" src="${PIC }" >
+					       		<img id="showpic" src="img/${updateproject.id }.jpg" >
 					       	</div>
 				       		<br>	
 				        </div>

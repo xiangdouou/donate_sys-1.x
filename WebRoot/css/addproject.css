@@ -96,8 +96,7 @@ p span{
 }
 
 .a-upload:hover {
-    color: #444;
-    background: #eee;
-    border-color: #ccc;
+    color: #35b306;
+    background: #ccefc7;
     text-decoration: none
 }

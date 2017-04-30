@@ -37,13 +37,27 @@ public class UploadImage extends HttpServlet {
 	            request.getSession().setAttribute("fileName",fileName);
 	            //获取项目的部署路劲  
 	            String basePath = getServletContext().getRealPath("/");  
-	   
+	            String id=request.getParameter("id");
+	            if(id!=null){//更新图片
+	            	picPath = basePath+"img\\"+id+".jpg";
+	            	request.getSession().setAttribute("PIC",null);
+	            }
+	            	
+	            else{//上传图片
 	            	picPath = basePath+"img\\"+fileName;  
+	            	//将刚刚上传的文件路径存在session中方便页面显示  
+		            request.getSession().setAttribute("PIC","img\\"+fileName);
+	            }      	
 	            //上传文件
 	            part.write(picPath);  
 	            
-	            //将刚刚上传的文件路径存在session中方便页面显示  
-	            request.getSession().setAttribute("PIC","img\\"+fileName);
+	          
+	            try {
+					Thread.sleep(1000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 	        	}
 	       
 }

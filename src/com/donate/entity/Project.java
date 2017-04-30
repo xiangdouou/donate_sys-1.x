@@ -9,7 +9,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
+/**
+ * 
+ * @author Fog
+ *功能：活动实体类
+ */
 @SuppressWarnings("serial")
 @Entity
 @Table(name="project",schema="donate_sys")

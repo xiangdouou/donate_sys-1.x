@@ -17,7 +17,11 @@ import com.donate.entity.Goods;
 import com.donate.entity.Money;
 import com.donate.entity.Project;
 import com.donate.entity.User;
-
+/**
+ * 
+ * @author Fog
+ *功能：捐献功能后台逻辑
+ */
 public class ProjectDonate extends HttpServlet {
 
 	private EntityDao<Project> projectDao=new EntityDaoImpl<Project>();

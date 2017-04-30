@@ -10,7 +10,11 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+/**
+ * 
+ * @author Fog
+ *功能：session过期拦截器
+ */
 public class SessionFilter implements Filter {
 
 	@Override

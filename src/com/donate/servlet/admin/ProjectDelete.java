@@ -11,7 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 import com.donate.dao.EntityDao;
 import com.donate.dao.EntityDaoImpl;
 import com.donate.entity.Project;
-
+/**
+ * 
+ * @author Fog
+ *功能：删除活动后台逻辑
+ */
 public class ProjectDelete extends HttpServlet {
 
 	private EntityDao<Project> projectDao=new EntityDaoImpl<Project>();

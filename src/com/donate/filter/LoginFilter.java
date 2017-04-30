@@ -13,13 +13,15 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.donate.entity.User;
-
+/**
+ * 
+ * @author Fog
+ *功能：登陆拦截器
+ */
 public class LoginFilter implements Filter {
 
 	@Override
 	public void destroy() {
-		
-
 	}
 
 	@Override

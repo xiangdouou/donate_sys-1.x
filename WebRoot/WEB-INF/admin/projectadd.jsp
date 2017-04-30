@@ -112,7 +112,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					        <!-- 上传图片 -->
 					        <form method="post" id="uploadForm" enctype="multipart/form-data">	
 					        	<a href="javascript:;" class="a-upload">			        	
-					       			<input type="file"  id="pic" name="pic" onchange="doUpload();"/>点击这里上传图片 
+					       			<input type="file"  id="pic" name="pic" onchange="doUpload();"/>上传图片 
 					       		</a>			
 					        </form>
 					       	<div class="imgdiv">

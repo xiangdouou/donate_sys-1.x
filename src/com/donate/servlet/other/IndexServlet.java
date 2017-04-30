@@ -18,7 +18,7 @@ import com.donate.entity.Project;
 /**
  * 
  * @author Fog
- *功能：
+ *功能：加载首页之前的操作（将活动表、钱数、物品数、放到session中等）
  */
 public class IndexServlet extends HttpServlet {
 

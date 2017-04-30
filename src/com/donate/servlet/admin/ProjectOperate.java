@@ -11,7 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 import com.donate.dao.EntityDao;
 import com.donate.dao.EntityDaoImpl;
 import com.donate.entity.Project;
-
+/**
+ * 
+ * @author Fog
+ *功能：活动操作后台跳转控制
+ */
 public class ProjectOperate extends HttpServlet {
 
 	private EntityDao<Project> projectDao=new EntityDaoImpl<Project>();
@@ -24,6 +28,8 @@ public class ProjectOperate extends HttpServlet {
 				String type=request.getParameter("type");
 				//如果是添加活动，跳转到添加活动页面
 				if(type.equals("add")){
+					//跳转到添加活动页面前将session中的PIC设为空
+					request.getSession().setAttribute("PIC",null);
 					request.getRequestDispatcher("/WEB-INF/admin/projectadd.jsp").forward(request, response);
 				}
 				//如果是更新活动
