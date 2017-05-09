@@ -31,11 +31,6 @@ public class ProjectAdd extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		try {
-//			if(request.getParameter("pro_Title")==null){
-//				request.getRequestDispatcher("/WEB-INF/admin/projectadd.jsp").forward(request, response);
-//				return;
-//			}
-			
 			Project project=new Project();
 			project.setPro_Title(new String (request.getParameter("pro_Title").getBytes("ISO-8859-1"),"utf-8"));
 			project.setPro_Type(Integer.parseInt(request.getParameter("pro_Type")));

@@ -35,7 +35,6 @@ public class UserDetail extends HttpServlet {
 					
 						String type=request.getParameter("type");
 						
-						System.out.println(type);
 						myInfo(request, response);
 						
 						//如果是查看个人主页
@@ -101,9 +100,10 @@ public class UserDetail extends HttpServlet {
 		HashSet<String> hs=new HashSet<String>(params);
 		params.clear();
 		params.addAll(hs);
-		
 		//根据活动名列表查询活动
-		List<Project> my_projects=projectDao.getWithOr(Project.class,"pro_Title",params);
+		List<Project> my_projects=null;
+		if(!params.isEmpty())
+		my_projects=projectDao.getWithOr(Project.class,"pro_Title",params);
 		
 		//倒序捐钱记录表，并取前10条
 		Collections.reverse(moneys);

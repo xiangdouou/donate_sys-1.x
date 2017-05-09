@@ -36,7 +36,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
      <div class="navbar navbar-default navbar-fixed-top">
         <div class="navbar-header">
-           　        		<a href="##" class="navbar-brand">爱心公益网 </a>
+           　        		<a href="##" class="navbar-brand">爱心捐助平台 </a>
         </div>
         <ul class="nav navbar-nav">
             <li><a href="<%=basePath%>admin/projectlist?pro_status=all&page=0">活动列表</a></li>

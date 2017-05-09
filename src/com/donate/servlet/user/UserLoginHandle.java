@@ -51,7 +51,6 @@ public class UserLoginHandle extends HttpServlet {
 				this.user.setUser_Pass(user_pass);
 				//获取之前的页面(从哪个页面跳转过来)的url,
 				String url=(String) request.getSession().getAttribute("url");
-				System.out.println("url "+url);
 			
 				if(userLogin(user)==true){
 				//登陆成功
