@@ -62,7 +62,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	            </ul>
 	        </div>
 	        <div class="col-xs-9">
-		        <div class="alert alert-danger" style="display: none;">
+		        <div class="alert alert-danger" id="alert" style="display: none;">
 		        	用户名已存在！！！
 		        </div>
 	        	<div class="row">
@@ -86,6 +86,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		        		<div>手机号:
 		        			<p>${user.user_Phone }</p>
 		        		</div>
+		        		<div>年龄:
+		        			<p>${user.user_Age}</p>
+		        		</div>
 		        		<div>性别:
 		        			<p>${user.user_Sex=='female'?'女':'男' }</p>
 		        		</div>
@@ -100,19 +103,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		        	</div>     		 	
 						<div id="update" class="panel" style="display: none;">
 						  <div class="panel-body">
-						    <form action="user/update">
+						    <form action="user/update" method="post">
 						    	<input type="hidden" name="id" value="${user.id}"/>
 								用户名:<input type="text" class="form-control" name="user_Name" value="${user.user_Name}" pattern="^[A-Za-z0-9_\-\u4e00-\u9fa5]{2,16}" title="中文或字母或数字2-16位" required="required"><br>
 								密码:<input type="password" class="form-control" name="user_Pass" value="${user.user_Pass }" pattern="^[A-Za-z0-9]{2,16}" title="字母或数字2-16位" required="required"><br>
 								手机号:<input type="text" class="form-control" name="user_Phone" value="${user.user_Phone }" pattern="0?(13|14|15|18)[0-9]{9}" title="请输入正确的手机号码" required="required"><br>
-					
+					           	 年龄:<input type="text" class="form-control" name="user_Age" value="${user.user_Age }"  max="130" min="5" title="请输入正确的手机号码" required="required"><br>
 								性别:<select class="form-control" name="user_Sex">
-								        <option>男</option>
-								        <option>女</option>
+								        <option value="male">男</option>
+								        <option value="female">女</option>
 							      	</select><br>
 							            邮箱:<input type="email" class="form-control" name="user_Email" value="${user.user_Email }" title="请输入正确的邮箱"><br>
 								地址:<input type="text" class="form-control" name="user_Address" value="${user.user_Address }" pattern="^[\u4e00-\u9fa5]+" title="请输入中文部分地址"><br>
-								<button class="btn btn-success pull-right" >修改</button>
+								<button type="submit" class="btn btn-success pull-right" >修改</button>
 
 							</form>
 						  </div>	
