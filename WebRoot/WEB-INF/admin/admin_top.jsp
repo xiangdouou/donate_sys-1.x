@@ -39,8 +39,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            　        		<a href="##" class="navbar-brand">爱心捐助平台 </a>
         </div>
         <ul class="nav navbar-nav">
-            <li><a href="<%=basePath%>admin/projectlist?pro_status=all&page=0">活动列表</a></li>
-            <li><a href="<%=basePath%>admin/projectoperate?type=add">添加活动</a></li>     
+            <li><a href="<%=basePath%>admin/projectlist?pro_status=all&page=1">活动列表</a></li>
+            <li><a href="<%=basePath%>admin/projectoperate?type=add">添加活动</a></li> 
+            <li><a href="<%=basePath%>admin/recordlist?page=1">捐赠记录</a></li>    
         </ul>
    
          <div class="navbar-right text-danger">

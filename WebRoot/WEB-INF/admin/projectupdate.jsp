@@ -32,9 +32,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	          contentType: false,    
 	          processData: false, 
 	          success: function (returndata) {    
-	            	$("#showpic").attr("src","img/${updateproject.id }.jpg");/*这是预览图片用的，自己在文件上传表单外添加*/  
-	        		//location.replace(location.href);
-	        		location.reload();
+	            	 document.getElementById("showpic").src=returndata;/*这是预览图片用的，自己在文件上传表单外添加*/  
 	          },    
 	          error: function (returndata) {    
 	              alert(returndata);    
@@ -157,7 +155,9 @@ $(function(){
 								<option selected="selected" value="donate">募捐中</option>
 								<option value="execute">执行中</option>
 								<option value="end">已结束</option>
-								</select><br>
+								</select>
+								<span>项目进展</span>
+					        	<textarea rows="3" cols="30" name="pro_Des" > ${updateproject.pro_StatusDes }</textarea><br><br>
 								<button class="btn btn-success pull-right">修改活动</button>															
 				      		</form>	  
 				        </div>				        

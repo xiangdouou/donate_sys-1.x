@@ -50,7 +50,6 @@ public class AdminProjectList extends HttpServlet {
 				else
 					page_nums=projects.size()/page_sum+1;
 				
-				//System.out.println(page_cur);
 				//如果页码<=1，取前6个活动
 				if(page_cur<=1){
 					int i;

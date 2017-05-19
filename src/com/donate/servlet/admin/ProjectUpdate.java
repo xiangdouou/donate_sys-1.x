@@ -48,8 +48,7 @@ public class ProjectUpdate extends HttpServlet {
 			request.getSession().setAttribute("updateproject",project);
 			List<Project> projects;
 			projects = projectDao.getByParam(Project.class,"pro_Title",project.getPro_Title());
-			System.out.println(projects.size());
-			if(projects.size()>1){
+			if(!projects.isEmpty() && projects.get(0).getId()!=project.getId()){
 				//如果相同标题的活动存在超过一条，返回到添加页面
 				request.setAttribute("projectUpdate",false);
 				request.getRequestDispatcher("/WEB-INF/admin/projectupdate.jsp").forward(request, response);
@@ -59,9 +58,16 @@ public class ProjectUpdate extends HttpServlet {
 			//修改活动
 			projectDao.update(project);	
 			
-			
-			//将session中的上传图片地址设为null
-			request.getSession().setAttribute("PIC",null);
+			//修改活动图片
+			String basePath = getServletContext().getRealPath("/");  
+	        String picPath = basePath+"img\\";
+			String pic=(String) request.getSession().getAttribute("PIC");
+			File oldFile=new File(picPath+project.getId()+".jpg");
+			if(oldFile.exists())
+				oldFile.delete();
+			File newFile=new File(pic);
+			newFile.renameTo(new File(picPath+project.getId()+".jpg"));
+			System.out.println(picPath+project.getId()+".jpg");
 			String up_url=(String) request.getSession().getAttribute("up_url");
 			response.sendRedirect(up_url);
 			

@@ -1,5 +1,6 @@
 package com.donate.servlet.admin;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
@@ -31,7 +32,13 @@ public class ProjectDelete extends HttpServlet {
 				//删除活动
 				projectDao.delete(projects.get(0));
 				
-				//request.getRequestDispatcher(de_url).forward(request, response);
+				//获取项目绝对路径
+				String basePath = getServletContext().getRealPath("/");  
+				//删除图片
+		        String picPath = basePath+"img\\";
+				File file=new File(picPath+projects.get(0).getId()+".jpg");
+				if(file.exists())
+					file.delete();
 				response.sendRedirect(de_url);
 				
 			} catch (Exception e) {

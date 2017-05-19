@@ -44,9 +44,10 @@ public class ProjectDonate extends HttpServlet {
 					//更新活动当前募捐到的物品（钱）总数
 					Project project= (Project)request.getSession().getAttribute("cur_project");
 					
-					//参加活动人次加一
-					project.setPro_CurPeoples(project.getPro_CurPeoples()+1);
 					if(type==1){//如果是捐钱
+						
+						//参加活动人次加一
+						project.setPro_CurPeoples(project.getPro_CurPeoples()+1);
 						donateMoney(request,response);
 						//加上钱数
 						project.setPro_CurNumber(project.getPro_CurNumber()+this.money_nums);
@@ -59,11 +60,11 @@ public class ProjectDonate extends HttpServlet {
 					if(type==2){//如果是捐物品
 						donateGoods(request, response);
 						//加上物品数
-						project.setPro_CurNumber(project.getPro_CurNumber()+this.goods_nums);
+						//project.setPro_CurNumber(project.getPro_CurNumber()+this.goods_nums);
 						
 						//更新捐钱列表
-						List<Goods> curpro_goodss=goodsDao.getByParam(Goods.class,"pro_Title",project.getPro_Title());
-						request.setAttribute("curpro_goodss", curpro_goodss);
+						//List<Goods> curpro_goodss=goodsDao.getByParam(Goods.class,"pro_Title",project.getPro_Title());
+						//request.setAttribute("curpro_goodss", curpro_goodss);
 	
 					}
 						
@@ -109,6 +110,7 @@ public class ProjectDonate extends HttpServlet {
 		goods.setUser_Name(user_Name);
 		goods.setPro_Title(pro_Title);
 		goods.setDo_Time(do_Time);
+		goods.setDo_actual("false");   //设置捐赠捐赠实际情况（初始为false）,管理员确认后改为true
 		
 		goodsDao.sava(goods);
 		

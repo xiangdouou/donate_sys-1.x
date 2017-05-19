@@ -30,9 +30,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	          contentType: false,    
 	          processData: false,    
 	          success: function (returndata) {    
-	             // document.getElementById("showpic").src="${PIC}";/*这是预览图片用的，自己在文件上传表单外添加*/  
-	          	 $("#showpic").attr("src","${PIC}");	
-	          	 location.replace(location.href);
+	            document.getElementById("showpic").src=returndata;/*这是预览图片用的，自己在文件上传表单外添加*/  
+	
 	          },    
 	          error: function (returndata) {    
 	              alert(returndata);    
@@ -116,7 +115,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					       		</a>			
 					        </form>
 					       	<div class="imgdiv">
-					       		<img id="showpic" src="${PIC}" >
+					       		<img id="showpic" src="" >
 					       	</div>
 				       		<br>	
 				        </div>

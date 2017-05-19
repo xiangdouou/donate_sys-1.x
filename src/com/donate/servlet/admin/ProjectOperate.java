@@ -28,8 +28,6 @@ public class ProjectOperate extends HttpServlet {
 				String type=request.getParameter("type");
 				//如果是添加活动，跳转到添加活动页面
 				if(type.equals("add")){
-					//跳转到添加活动页面前将session中的PIC设为空
-					request.getSession().setAttribute("PIC",null);
 					request.getRequestDispatcher("/WEB-INF/admin/projectadd.jsp").forward(request, response);
 				}
 				//如果是更新活动

@@ -29,6 +29,7 @@ public class Project implements Serializable{
 	private Integer pro_TargetNumber;
 	private Integer pro_CurNumber;
 	private Integer pro_CurPeoples;
+	private String pro_StatusDes;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -130,9 +131,13 @@ public class Project implements Serializable{
 		this.pro_CurPeoples = pro_CurPeoples;
 	}
 	
+	@Basic
+	@Column(name="pro_StatusDes")
+	public String getPro_StatusDes() {
+		return pro_StatusDes;
+	}
+	public void setPro_StatusDes(String pro_StatusDes) {
+		this.pro_StatusDes = pro_StatusDes;
+	}
 	
-	
-	
-	
-
 }

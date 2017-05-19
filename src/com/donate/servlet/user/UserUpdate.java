@@ -39,12 +39,10 @@ public class UserUpdate extends HttpServlet {
 			user.setUser_Address(new String(request.getParameter("user_Address").getBytes("ISO-8859-1"),"utf-8"));
 			user.setUser_Email(request.getParameter("user_Email"));
 			
-			System.out.println("username "+user.getUser_Name());
 			
 			//查询数据是否存在要修改的用户名
 			List<User> users=userDao.getByParam(User.class,"user_Name",user.getUser_Name());
-			System.out.println(users.get(0).getId()+" "+user.getId());
-			if(users.get(0).getId()!=user.getId()){  
+			if(users.isEmpty()|| users.get(0).getId()!=user.getId()){  
 				//如果存在，返回修改界面
 				request.setAttribute("userUpdate", false);
 				request.getRequestDispatcher("../jsp/user/user_detail_myinfo.jsp").forward(request, response);

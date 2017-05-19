@@ -23,10 +23,10 @@
 		</property>
       
       	<!-- 设置sql语句可见 -->
-        <property name="show_sql">true</property>
+        <property name="show_sql">false</property>
         
         <!-- 设置sql语句格式化 -->
-        <property name="format_sql">true</property>
+        <property name="format_sql">false</property>
         
         <!-- 操作数据库时对数据库表结构更新，最常用 -->
         <property name="hbm2ddl.auto">update</property> 

@@ -89,8 +89,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									</div>
 									<!-- 进度条数字 -->
 									<span class="text-muted number text-right"><fmt:formatNumber  type="number" value="${project.pro_CurNumber>=project.pro_TargetNumber?100:project.pro_CurNumber*100/project.pro_TargetNumber}" maxFractionDigits="0"/> %</span> 
-								   
-									<a class="btn btn-success btn-sm" href="project/detail?pro_id=${project.id }">我要参与</a> 
+								   	<c:if test="${project.pro_Status=='donate'}">	
+										<a class="btn btn-success btn-sm" href="project/detail?pro_id=${project.id }">我要参与</a> 
+								   	</c:if>
+								   	<c:if test="${project.pro_Status=='execute'}">
+								   		<button class="btn btn-danger btn-sm" disabled="disabled">执行中</button>
+								   	</c:if>
+								   	<c:if test="${project.pro_Status=='end'}">
+								   		<button class="btn btn-danger btn-sm" disabled="disabled">已结束</button>
+								   	</c:if>
 								</div>
 							</div>
 				        </div>				        

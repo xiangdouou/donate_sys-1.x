@@ -50,7 +50,7 @@ public class UserRegister extends HttpServlet {
 				else{
 					
 					request.setAttribute("register", false);
-					//response.sendRedirect("../jsp/user/user_register.jsp?reg_status=false");
+					
 					request.getRequestDispatcher("../jsp/user/user_register.jsp").forward(request, response);
 				}
 			} catch (Exception e) {			

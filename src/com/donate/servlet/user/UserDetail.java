@@ -3,8 +3,10 @@ package com.donate.servlet.user;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -69,7 +71,7 @@ public class UserDetail extends HttpServlet {
 			doGet(request, response);
 	}
 	
-	//获取参加的活动
+	//获取个人中心信息
 	public void myInfo(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		//获取当前用户
 		User user=(User) request.getSession().getAttribute("user");
@@ -81,6 +83,8 @@ public class UserDetail extends HttpServlet {
 		Integer my_goodsnum=0;
 		
 		//从捐钱记录表中根据用户名查询该用户的所有捐钱记录,并将活动名加到集合中
+		
+		
 		List<Money> moneys=moneyDao.getByParam(Money.class,"user_Name",user.getUser_Name());
 		for(Money money:moneys){
 			//累计捐出的钱数总和
@@ -88,8 +92,12 @@ public class UserDetail extends HttpServlet {
 			params.add(money.getPro_Title());
 		}
 		
-		//从物品记录表中根据用户名查询该用户的所有捐物品记录，并将活动名加到集合中
-		List<Goods> goodss=goodsDao.getByParam(Goods.class,"user_Name",user.getUser_Name());
+		//查询当前用户已被确认的捐物品记录
+		Map<String,Object > goods_params=new HashMap<String, Object>();
+		goods_params.put("user_Name", user.getUser_Name());
+		goods_params.put("do_actual", "true");
+		//从物品记录表中根据用户名查询查询当前用户已被确认的捐物品记录，并将活动名加到集合中
+		List<Goods> goodss=goodsDao.getByParams(1,Goods.class,goods_params);
 		for(Goods goods:goodss){
 			//累计捐出的物品数总和
 			my_goodsnum+=goods.getGo_Number();

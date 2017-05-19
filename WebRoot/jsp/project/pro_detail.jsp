@@ -114,39 +114,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				        	</div>
 				        </div>
 				        
-				       <!-- 根据活动状态显示活动进展 -->	
-				       	<!-- 如果是“募捐” -->		       
-				       	<c:if test="${cur_project.pro_Status=='donate'}">
-				        	 <div class="tab-pane fade" id="tab2">本活动正在募捐中</div> 
-				        </c:if>
-				        
-				        <!-- 如果是“执行” -->	
-				        <c:if test="${cur_project.pro_Status=='execute'}">
-				        	<!-- 如果活动募捐钱 -->
-				        	<c:if test="${cur_project.pro_Type==1 }">
-				         		<div class="tab-pane fade" id="tab2">本活动已结束，所募捐到的善款将交付到${cur_project.pro_Sponsor }手中</div> 
-				         	</c:if>
-				         	
-				         	<!-- 如果活动募捐物品 -->
-				         	<c:if test="${cur_project.pro_Type==2 }">
-				         		<div class="tab-pane fade" id="tab2">本活动已结束，所募捐到的物品正由主办单位${cur_project.pro_Sponsor }交付到受助人手中</div> 
-				         	</c:if> 
-				        </c:if>
-				        
-				        <!-- 如果是“结束” -->	
-				        <c:if test="${cur_project.pro_Status=='end'}">
-				         	<!-- 如果活动募捐钱 -->
-				         	<c:if test="${cur_project.pro_Type==1 }">
-				         		<div class="tab-pane fade" id="tab2">本活动已结束，所募捐到的善款已被${cur_project.pro_Sponsor }用于所需款项</div> 
-				         	</c:if>
-				         	
-				         	<!-- 如果活动募捐物品-->
-				         	<c:if test="${cur_project.pro_Type==2 }">
-				         		<div class="tab-pane fade" id="tab2">本活动已结束，所募捐到的物品已由主办单位${cur_project.pro_Sponsor }发放到受助人手中</div> 
-				         	</c:if>
-				        	
-				        </c:if>
-				                
+				       <!-- 活动进展 -->	
+						<div class="tab-pane fade" id="tab2">${cur_project.pro_StatusDes}</div>				                
 				     </div>
 				
 				</div>

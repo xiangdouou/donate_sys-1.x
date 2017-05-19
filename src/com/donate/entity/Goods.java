@@ -23,6 +23,7 @@ public class Goods implements Serializable {
 	private String user_Name;  //对应用户名
 	private String pro_Title;  //对应活动标题
 	private String do_Time;    //捐赠时间
+	private String do_actual;  //实际捐助的物品
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -78,6 +79,16 @@ public class Goods implements Serializable {
 	public void setDo_Time(String do_Time) {
 		this.do_Time = do_Time;
 	}
+	
+	@Basic
+	@Column(name="do_actual",nullable=false)
+	public String getDo_actual() {
+		return do_actual;
+	}
+	public void setDo_actual(String do_actual) {
+		this.do_actual = do_actual;
+	}
+	
 	
 	
 	

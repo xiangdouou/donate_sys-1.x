@@ -97,6 +97,27 @@
     <servlet-name>ProjectDelete</servlet-name>
     <servlet-class>com.donate.servlet.admin.ProjectDelete</servlet-class>
   </servlet>
+  <servlet>
+    <description>RecordListServlet</description>
+    <display-name>RecordListServlet</display-name>
+    <servlet-name>RecordListServlet</servlet-name>
+    <servlet-class>com.donate.servlet.admin.RecordListServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>RecordConfirm</description>
+    <display-name>RecordConfirm</display-name>
+    <servlet-name>RecordConfirm</servlet-name>
+    <servlet-class>com.donate.servlet.admin.RecordConfirm</servlet-class>
+  </servlet>
+  <servlet>
+    <description>RecordDelete</description>
+    <display-name>RecordDelete</display-name>
+    <servlet-name>RecordDelete</servlet-name>
+    <servlet-class>com.donate.servlet.admin.RecordDelete</servlet-class>
+  </servlet>
+
+
+
 
 
 
@@ -197,6 +218,18 @@
   <servlet-mapping>
     <servlet-name>ProjectDelete</servlet-name>
     <url-pattern>/admin/projectdelete</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>RecordListServlet</servlet-name>
+    <url-pattern>/admin/recordlist</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>RecordConfirm</servlet-name>
+    <url-pattern>/admin/recordconfirm</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>RecordDelete</servlet-name>
+    <url-pattern>/admin/recorddelete</url-pattern>
   </servlet-mapping>
   
     <error-page>  
