@@ -132,7 +132,7 @@ button {
 	   				<button type="submit" class="btn btn-success">确认捐赠</button>
 	   			</form>
    				</div>
-   			</div>
+   			</div> 
    		</div>
    </div>
   </body>
