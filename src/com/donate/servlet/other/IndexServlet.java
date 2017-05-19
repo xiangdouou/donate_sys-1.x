@@ -40,12 +40,9 @@ public class IndexServlet extends HttpServlet {
 		//将活动列表放到session中
 		request.getSession().setAttribute("projects", projects);
 		List<Project> hot_projects=new ArrayList<Project>();
-		//将前8条状态为“募捐”的活动放到hot_projects中,如果活动总数小于8，跳出循环
-		for(int i=0,j=0;j<8 && i<projects.size();i++){
-			if(projects.get(i).getPro_Status().equals("donate")){
+		//将前8条活动放到hot_projects中,如果活动总数小于8，跳出循环
+		for(int i=0;1<8 && i<projects.size();i++){
 				hot_projects.add(projects.get(i));
-				j++;
-			}	
 		}
 		
 		request.getSession().setAttribute("hot_projects", hot_projects);

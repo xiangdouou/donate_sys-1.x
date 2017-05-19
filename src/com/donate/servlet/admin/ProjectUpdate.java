@@ -67,7 +67,6 @@ public class ProjectUpdate extends HttpServlet {
 				oldFile.delete();
 			File newFile=new File(pic);
 			newFile.renameTo(new File(picPath+project.getId()+".jpg"));
-			System.out.println(picPath+project.getId()+".jpg");
 			String up_url=(String) request.getSession().getAttribute("up_url");
 			response.sendRedirect(up_url);
 			

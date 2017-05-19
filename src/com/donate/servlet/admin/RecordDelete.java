@@ -27,7 +27,7 @@ public class RecordDelete extends HttpServlet {
 					List<Goods> goods=goodsDao.getByParam(Goods.class,"id",id);
 					
 					goodsDao.delete(goods.get(0));
-					
+					response.sendRedirect("recordlist?page=1");
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

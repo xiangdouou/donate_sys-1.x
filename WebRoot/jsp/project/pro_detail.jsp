@@ -62,7 +62,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						 	 <c:if test="${cur_project.pro_Type==1 }">
 								 <!-- 选择要捐的金额 -->
 								 <div class="moneydiv">
-								 	<form action="${pageContext.request.contextPath}/project/donate?type=${cur_project.pro_Type }" method="post">  
+								 	<form action="jsp/project/pay.jsp" method="post">  
 								 		金额：
 									 	<input type="number" required="required" name="money_Number" step="20" min="20">
 									 	<button type="submit" class="btn btn-success btn-sm">我要捐钱</button>
@@ -74,7 +74,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<c:if test="${cur_project.pro_Type==2 }">
 								 <!-- 选择要捐的物资的类别和数量 -->
 								 <div class="mupindiv">
-								 	<form action="./project/donate?type=${cur_project.pro_Type }" method="post">
+								 	<form action="jsp/project/paywu.jsp" method="post">
 									 	类别：
 									 	<select name="goods_Name">
 									 		<option>衣服</option>

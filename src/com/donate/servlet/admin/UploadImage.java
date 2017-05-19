@@ -50,8 +50,8 @@ public class UploadImage extends HttpServlet {
 	            part.write(picPath);  
 	            
 	          //将刚刚上传的文件路径存在session中以便更新和添加活动时修改图片
-	            System.out.println("picPath"+picPath);
 		        request.getSession().setAttribute("PIC",picPath);
+		        //返回给ajax数据
 	            PrintWriter out=response.getWriter();
 	            out.write("img\\"+fileName);
 	        	}

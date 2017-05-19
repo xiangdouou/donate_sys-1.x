@@ -128,11 +128,6 @@
     <filter-class>com.donate.filter.LoginFilter</filter-class>
   </filter>
   
-  <!-- session过期拦截器 -->
-  <filter>
-    <filter-name>SessionFilter</filter-name>
-    <filter-class>com.donate.filter.SessionFilter</filter-class>
-  </filter>
 
 	
 	<!-- 查看个人中心拦截 -->
@@ -152,11 +147,7 @@
 	    <url-pattern>/admin/*</url-pattern>
  	</filter-mapping>
  	
- 	<!-- session过期拦截器 -->
- 	<filter-mapping>
- 		<filter-name>SessionFilter</filter-name>
-	    <url-pattern>*.jsp</url-pattern>
- 	</filter-mapping>
+
  	
   <servlet-mapping>
     <servlet-name>UserLoginHandle</servlet-name>
