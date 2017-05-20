@@ -44,6 +44,7 @@ public class ProjectUpdate extends HttpServlet {
 			project.setPro_EndTime(request.getParameter("pro_EndTime"));
 			project.setPro_Status(request.getParameter("pro_Status"));
 			project.setPro_TargetNumber(Integer.parseInt(request.getParameter("pro_TargetNumber")));
+			project.setPro_StatusDes(new String (request.getParameter("pro_StatusDes").getBytes("ISO-8859-1"),"utf-8"));
 			
 			request.getSession().setAttribute("updateproject",project);
 			List<Project> projects;

@@ -1,6 +1,8 @@
 package com.donate.filter;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -31,6 +33,11 @@ public class LoginFilter implements Filter {
 	    HttpServletResponse response = (HttpServletResponse) arg1;    
         HttpServletRequest request=(HttpServletRequest)arg0;  
         HttpSession session = request.getSession(true);    
+    	Map<String,String > pro_status=new HashMap<String, String>();
+		pro_status.put("donate","正在募捐");
+		pro_status.put("execute","正在执行");
+		pro_status.put("end","已结束");
+		request.getSession().setAttribute("pro_status", pro_status);
         
         User user = (User) session.getAttribute("user");
         String url=request.getHeader("REFERER");

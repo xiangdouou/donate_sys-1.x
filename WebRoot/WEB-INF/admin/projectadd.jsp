@@ -149,7 +149,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<option value="donate" selected="selected">募捐中</option>
 								<option value="execute">执行中</option>
 								<option value="end">已结束</option>
-								</select><br>
+								</select>
+								<span>项目进展</span>
+					        	<textarea rows="3" cols="30" name="pro_StatusDes" ></textarea><br><br>
 								<button class="btn btn-success pull-right">添加活动</button>	
 							</form>	  														
 				        </div>				        

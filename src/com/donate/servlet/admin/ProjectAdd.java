@@ -42,6 +42,7 @@ public class ProjectAdd extends HttpServlet {
 			project.setPro_EndTime(request.getParameter("pro_EndTime"));
 			project.setPro_Status(request.getParameter("pro_Status"));
 			project.setPro_TargetNumber(Integer.parseInt(request.getParameter("pro_TargetNumber")));
+			project.setPro_StatusDes(new String (request.getParameter("pro_StatusDes").getBytes("ISO-8859-1"),"utf-8"));
 			
 			request.getSession().setAttribute("addproject",project);
 			List<Project> projects=projectDao.getByParam(Project.class,"pro_Title",project.getPro_Title());
@@ -54,6 +55,7 @@ public class ProjectAdd extends HttpServlet {
 			//保存活动
 			projectDao.sava(project);
 			
+			request.getSession().setAttribute("addproject", null);
 			//获取刚刚上传的图片的名
 			String pic=(String) request.getSession().getAttribute("PIC");
 			//获取项目绝对路径

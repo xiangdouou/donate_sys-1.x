@@ -157,7 +157,7 @@ $(function(){
 								<option value="end">已结束</option>
 								</select>
 								<span>项目进展</span>
-					        	<textarea rows="3" cols="30" name="pro_Des" > ${updateproject.pro_StatusDes }</textarea><br><br>
+					        	<textarea rows="3" cols="30" name="pro_StatusDes" > ${updateproject.pro_StatusDes }</textarea><br><br>
 								<button class="btn btn-success pull-right">修改活动</button>															
 				      		</form>	  
 				        </div>				        
