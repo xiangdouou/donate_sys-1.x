@@ -35,10 +35,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	background-color: white;
   	height: 70px;
   }
-  .navtitle{
-  
-   margin-left:200px;
-  
+  #navtitle{
+  color: #ea6f5a;
+    font-size: 23px;
+    font-weight: bold;
+    padding: 23px;
   }
   .toptitle{
     position: relative;
@@ -106,7 +107,7 @@ button {
   <body>
    <nav class="navbar navbar-default navbar-fixed-top">
        
-   		<span class="navtitle"><img src="<%=basePath%>img/pt.jpg"></span>
+   		<span class="navbar-brand " id="navtitle">爱心捐助平台</span>
    		<span class="toptitle">支付中心</span>
    </nav>
    <%
@@ -116,7 +117,7 @@ button {
    		<div class="row">
    			<div class="col-xs-8 col-xs-offset-2">
    				<div class="title">
-	   				<span>${cur_project.pro_Title }</span>
+	   				<span><a href="project/detail?pro_id=${cur_project.id }">${cur_project.pro_Title }</a></span>
 	   				<span class="small text-muted">${cur_project.pro_Sponsor }</span>
 	   				
    				</div>

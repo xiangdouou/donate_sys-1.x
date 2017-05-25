@@ -58,14 +58,7 @@ public class ProjectDonate extends HttpServlet {
 						
 					}
 					if(type==2){//如果是捐物品
-						donateGoods(request, response);
-						//加上物品数
-						//project.setPro_CurNumber(project.getPro_CurNumber()+this.goods_nums);
-						
-						//更新捐钱列表
-						//List<Goods> curpro_goodss=goodsDao.getByParam(Goods.class,"pro_Title",project.getPro_Title());
-						//request.setAttribute("curpro_goodss", curpro_goodss);
-	
+						donateGoods(request, response);	
 					}
 						
 					projectDao.update(project);

@@ -42,7 +42,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		        	<div class="content col-xs-10 col-xs-offset-1">
 						<div class="title">
 							 <span class="listtitle h2">
-							 	我的捐款记录
+							 		我的捐款记录
 							 	<span class="badge">共${my_moneysnum }元</span>
 							 </span>	
 						</div>

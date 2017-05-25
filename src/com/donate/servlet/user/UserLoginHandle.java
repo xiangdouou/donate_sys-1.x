@@ -41,10 +41,7 @@ public class UserLoginHandle extends HttpServlet {
 				}
 				//获取从页面传过来的用户名和密码
 				String user_name=new String(request.getParameter("user_name").getBytes("ISO-8859-1"),"utf-8");
-				String user_pass=request.getParameter("user_pass");
-				
-			
-					
+				String user_pass=request.getParameter("user_pass");	
 				//声明一个用户并赋值
 				this.user=new User();
 				this.user.setUser_Name(user_name);

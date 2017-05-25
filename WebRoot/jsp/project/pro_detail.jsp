@@ -17,6 +17,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <link href="<%=basePath%>css/font-awesome.min.css" rel="stylesheet" type="text/css"> 
  	<script src="<%=basePath%>js/jquery-2.2.3.min.js"></script>
     <script src="<%=basePath%>js/bootstrap.min.js" ></script>
+    <style type="text/css">
+    #other{
+        width: 220px;
+	    margin-left: 47px;
+	    margin-top: 10px;
+    }
+    </style>
   </head>
   <body>
      <c:import url="../top.jsp"/>
@@ -76,15 +83,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								 <div class="mupindiv">
 								 	<form action="jsp/project/paywu.jsp" method="post">
 									 	类别：
-									 	<select name="goods_Name">
+									 	<select name="goods_Name" id="items" onchange="other_item()">
 									 		<option>衣服</option>
 									 		<option>书包</option>
 									 		<option>书本文具</option>
 									 		<option>玩具</option>
+									 		<option>其它</option>
 									 	</select>
 									 	数量：
 									 	<input type="number" required="required" name="goods_Number" min="1">
-									 	<button type="submit" class="btn btn-success btn-sm">我要捐物</button>
+									 	<button type="submit" class="btn btn-success btn-sm">我要捐物</button><br>
+									 	<input name="goods_Name" id="other" pattern="^[\u4e00-\u9fa5A-Za-z0-9]{0,8}" title="物品类别应小于8位且只能为字母、中文或数字" type="hidden" placeholder="输入物品类别" />
 								 	</form>
 								 </div>
 							</c:if>			
@@ -174,8 +183,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div class="text-center">@版权归</div>
 	</div>
   </footer> 
-
+  
 <script>
+function other_item(){
+		if($("#items").val()=='其它'){
+			$("#items").attr('name',"items");
+			$("#other").attr('type',"text");
+		}
+		else{
+			$("#other").attr('type',"hidden");	
+		}
+	}
 	var area = document.getElementById('box');
 	var cont1 = document.getElementById('cont1');
 	var cont2 = document.getElementById('cont2');
@@ -206,6 +224,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    // 继续执行之前的定时器
 	    interval = setInterval('myScroll()', time);
 	};
+	
+	
 </script>
 
 

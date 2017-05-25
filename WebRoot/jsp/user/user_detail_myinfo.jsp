@@ -15,7 +15,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" type="text/css" href="<%=basePath%>css/bootstrap.min.css">
  	<link rel="stylesheet" type="text/css" href="<%=basePath%>css/nav.css">
  	<link rel="stylesheet" type="text/css" href="<%=basePath%>css/myrecord.css">
- 	 	<link rel="stylesheet" type="text/css" href="<%=basePath%>css/alterperson.css">		
+ 	<link rel="stylesheet" type="text/css" href="<%=basePath%>css/alterperson.css">		
     <link href="<%=basePath%>css/font-awesome.min.css" rel="stylesheet" type="text/css"> 
  	<script src="<%=basePath%>js/jquery-2.2.3.min.js"></script>
     <script src="<%=basePath%>js/bootstrap.min.js" ></script>
@@ -42,9 +42,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </script>
 
   </head>
-   <style type="text/css">
-
-    </style>
+   
 <body onload="load()">
 <c:import url="../top.jsp"/>
 <div class="container">
